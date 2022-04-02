@@ -4,9 +4,9 @@
     <string name="title_dashboard">ADD</string>
     <string name="title_notifications">Statics</string>
     <string-array name="category">
-        <item>Food</item>
-        <item>Bills</item>
-        <item>Clothing</item>
-        <item>Others</item>
+        <item>FOOD</item>
+        <item>BILLS</item>
+        <item>CLOTHING</item>
+        <item>OTHERS</item>
     </string-array>
 </resources>

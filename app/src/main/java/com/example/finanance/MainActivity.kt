@@ -1,6 +1,10 @@
 package com.example.finanance
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.AutoCompleteTextView
+import android.widget.EditText
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -8,6 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.finanance.databinding.ActivityMainBinding
+import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +34,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
             )
         )
+
+
+
 
        // setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
