@@ -3,4 +3,10 @@
     <string name="title_home">Home op</string>
     <string name="title_dashboard">ADD</string>
     <string name="title_notifications">Statics</string>
+    <string-array name="category">
+        <item>Food</item>
+        <item>Bills</item>
+        <item>Clothing</item>
+        <item>Others</item>
+    </string-array>
 </resources>
