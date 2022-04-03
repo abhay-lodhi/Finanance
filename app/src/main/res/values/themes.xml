@@ -14,4 +14,13 @@
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar">?attr/colorOnSecondary</item>
     </style>
+    <style name="EditTextTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">@color/grey2</item>
+        <item name="colorControlActivated">@color/purple_500</item>
+    </style>
+    <style name="Textinputlayouttheme"  parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">@color/grey2</item>
+        <item name="colorControlActivated">@color/purple_500</item>
+
+    </style>
 </resources>

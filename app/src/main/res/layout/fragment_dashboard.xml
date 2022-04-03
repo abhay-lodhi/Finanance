@@ -15,15 +15,18 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:paddingBottom="15dp"
+        android:paddingLeft="2dp"
         android:paddingTop="5dp"
         android:textSize="18dp"
         android:minHeight="60dp"
         android:hint="Ammount"
+        android:theme="@style/EditTextTheme"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+      />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textinputlayout"
@@ -31,17 +34,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="18dp"
         android:layout_marginRight="15dp"
         android:background="@android:color/transparent"
         android:onClick="textinputlay"
+        app:startIconTint="@null"
         app:boxBackgroundColor="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
         app:startIconDrawable="@drawable/ic_outline_fastfood_24"
-
         >
 
         <AutoCompleteTextView
@@ -54,7 +57,9 @@
             android:paddingBottom="3dp"
             android:paddingTop="5dp"
             android:minHeight="60dp"
-            android:text="FOOD" />
+            android:text="FOOD"
+            android:theme="@style/Textinputlayouttheme"
+            />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -67,14 +72,18 @@
         android:layout_marginTop="7dp"
         android:layout_marginRight="15dp"
         android:ems="10"
-        android:hint="     DATE"
+        android:paddingLeft="10dp"
+        android:hint="DATE"
         android:textSize="18dp"
         android:paddingBottom="15dp"
         android:paddingTop="5dp"
+        android:drawablePadding="15dp"
+        android:theme="@style/EditTextTheme"
         android:inputType="date"
         android:minHeight="60dp"
         android:drawableStart="@drawable/ic_outline_calendar_month_24"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textinputlayout" />
@@ -84,14 +93,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="18dp"
         android:layout_marginRight="15dp"
         android:ems="10"
         android:hint="ADD notes"
         android:minHeight="60dp"
+        android:paddingLeft="2dp"
         android:paddingTop="5dp"
         android:paddingBottom="15dp"
         android:textSize="18dp"
+        android:theme="@style/EditTextTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,7 +115,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:minHeight="60dp"
-        android:layout_marginBottom="110dp"
+        android:layout_marginBottom="150dp"
         android:text="SAVE"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"

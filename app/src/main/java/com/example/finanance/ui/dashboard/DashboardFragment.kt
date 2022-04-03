@@ -27,17 +27,6 @@ class DashboardFragment : Fragment() {
         val category=resources.getStringArray(R.array.category)
         val arrayadapter=ArrayAdapter(requireContext(),R.layout.dropdown_category,category)
         binding.autoCompleteTextView.setAdapter(arrayadapter)
-//        val autocomplete=getView()?.findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
-//        autocomplete?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//
-//            }
-//
-//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//
-//            }
-//
-//        }
 
         val t2 =getView()?.findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
         val textinput =getView()?.findViewById<TextInputLayout>(R.id.textinputlayout)
