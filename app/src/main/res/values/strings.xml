@@ -6,7 +6,8 @@
     <string-array name="category">
         <item>FOOD</item>
         <item>BILLS</item>
-        <item>CLOTHING</item>
+        <item>SHOPPING</item>
+        <item>Daily Needs</item>
         <item>OTHERS</item>
     </string-array>
 </resources>
