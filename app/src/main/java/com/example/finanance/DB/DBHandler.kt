@@ -104,7 +104,7 @@ class DBHandler(context: Context) :
      return success
     }
 
-fun getMonthData(dat: LocalDate): typeModelClass {
+fun getMonthData(dat: String): typeModelClass {
 val db= this.readableDatabase
     val stats: typeModelClass
     var cs: Cursor? = null

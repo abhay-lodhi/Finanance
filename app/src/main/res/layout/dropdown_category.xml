@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="14dp"
+    android:drawableStart="@drawable/ic_outline_fastfood_24"
     android:textAppearance="?attr/textAppearanceSubtitle1"
     />
 

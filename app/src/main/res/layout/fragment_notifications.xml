@@ -10,56 +10,56 @@
     <TextView
         android:id="@+id/foodtext"
         android:layout_width="260dp"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
         android:layout_weight="1"
-        android:drawableStart="@drawable/ic_outline_fastfood_24"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
-        android:paddingLeft="10dp"
-        android:text="FOOD          "
-        android:textSize="25dp"
+        android:paddingStart="10dp"
+        android:text="Food"
+        android:textSize="22sp"
+        app:drawableStartCompat ="@drawable/ic_outline_fastfood_24"
         app:layout_constraintBottom_toTopOf="@+id/billstext"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/billstext"
         android:layout_width="260dp"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
         android:layout_weight="1"
-        android:drawableStart="@drawable/ic_outline_fastfood_24"
+        app:drawableStartCompat ="@drawable/ic_outline_attach_money_24"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
-        android:paddingLeft="10dp"
-        android:text="FOOD"
-        android:textSize="25dp"
+        android:paddingStart="10dp"
+        android:text="Bills"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/shoppingtext"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/shoppingtext"
         android:layout_width="260dp"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
         android:layout_weight="1"
-        android:drawableStart="@drawable/ic_outline_fastfood_24"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
-        android:paddingLeft="10dp"
-        android:text="FOOD"
-        android:textSize="25dp"
+        android:paddingStart="10dp"
+        android:text="Shopping"
+        android:textSize="22sp"
+        app:drawableStartCompat ="@drawable/ic_outline_attach_money_24"
         app:layout_constraintBottom_toTopOf="@+id/dailytext"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/dailytext"
         android:layout_width="260dp"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
         android:layout_weight="1"
-        android:drawableStart="@drawable/ic_outline_fastfood_24"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
-        android:paddingLeft="10dp"
-        android:text="FOOD"
-        android:textSize="25dp"
+        android:paddingStart="10dp"
+        android:text="Daily Needs"
+        android:textSize="22sp"
+        app:drawableStartCompat ="@drawable/ic_outline_attach_money_24"
         app:layout_constraintBottom_toTopOf="@+id/otherstext"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -67,15 +67,15 @@
     <TextView
         android:id="@+id/otherstext"
         android:layout_width="260dp"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
         android:layout_weight="1"
-        android:drawableStart="@drawable/ic_outline_fastfood_24"
         android:drawablePadding="15dp"
         android:gravity="center_vertical"
-        android:paddingLeft="10dp"
-        android:text="FOOD"
-        android:textSize="25dp"
-        android:layout_marginBottom="60dp"
+        android:paddingStart="10dp"
+        android:text="Others"
+        android:textSize="22sp"
+        android:layout_marginBottom="70dp"
+        app:drawableStartCompat ="@drawable/ic_outline_attach_money_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:gravity="bottom"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:paddingLeft="15dp"
         app:layout_constraintBottom_toTopOf="@+id/foodtext"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,31 +115,47 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
 
-        <TextView
-            android:id="@+id/textView7"
+        <EditText
+            android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:layout_weight="18"
+            android:maxLines="1"
+            android:backgroundTint="@color/white"
             android:text="TextView" />
 
 
-        <ImageView
+        <Button
+            android:id="@+id/enter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="18"
+            android:text="Button" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
             android:id="@+id/left_icon"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
             android:clickable="true"
-            android:src="@drawable/ic_outline_chevron_left_24"/>
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_outline_chevron_left_24" />
 
-        <ImageView
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
             android:id="@+id/right_icon"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:layout_gravity="center"
+            android:backgroundTint="@color/white"
             android:clickable="true"
+            android:minWidth="48dp"
+
+            android:minHeight="48dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_chevron_right_24" />
 
     </LinearLayout>
@@ -156,8 +172,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="22dp"
-            android:text="ADD"
+            android:textSize="22sp"
+            android:text="Stats"
             android:layout_gravity="center"
             android:textColor="@color/black2"
             android:id="@+id/toolbar_title" />
@@ -174,26 +190,26 @@
     <TextView
         android:id="@+id/otherstxtamt"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
         android:text="othersamt"
         android:gravity="center_vertical"
-        android:drawableStart="@drawable/ic_outline_currency_rupee_24"
         android:drawablePadding="15dp"
-        android:textSize="25dp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="70dp"
+        app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
         app:layout_constraintStart_toEndOf="@+id/otherstext" />
 
     <TextView
         android:id="@+id/dailytxtamt"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
         android:text="dailyamt"
         android:gravity="center_vertical"
-        android:drawableStart="@drawable/ic_outline_currency_rupee_24"
         android:drawablePadding="15dp"
-        android:textSize="25dp"
+        android:textSize="22sp"
+        app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
         app:layout_constraintBottom_toTopOf="@+id/otherstxtamt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dailytext" />
@@ -201,39 +217,40 @@
     <TextView
         android:id="@+id/shoppingtxtamt"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
         android:text="shoppingamt"
-        android:drawableStart="@drawable/ic_outline_currency_rupee_24"
         android:drawablePadding="15dp"
-        android:textSize="25dp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/dailytxtamt"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center_vertical"
+        app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
         app:layout_constraintStart_toEndOf="@+id/shoppingtext" />
 
     <TextView
         android:id="@+id/billstxtamt"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
         android:text="billsamt"
-        android:drawableStart="@drawable/ic_outline_currency_rupee_24"
         android:drawablePadding="15dp"
-        android:textSize="25dp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/shoppingtxtamt"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center_vertical"
+        app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
         app:layout_constraintStart_toEndOf="@+id/billstext" />
 
     <TextView
         android:id="@+id/foodtxtamt"
         android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:drawableStart="@drawable/ic_outline_currency_rupee_24"
+        android:layout_height="58dp"
         android:drawablePadding="15dp"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/billstxtamt"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="22sp"
         android:text="foodamt"
         android:gravity="center_vertical"
+        app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
+        app:layout_constraintBottom_toTopOf="@+id/billstxtamt"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/foodtext" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@
         <item>Daily Needs</item>
         <item>OTHERS</item>
     </string-array>
+
     <integer-array name="category_icons">
         <item>@drawable/ic_outline_currency_rupee_24</item>
         <item>@drawable/ic_baseline_chevron_right_24</item>
