@@ -12,14 +12,16 @@ import com.example.finanance.DB.DBHandler
 import com.example.finanance.R
 import com.example.finanance.databinding.FragmentDashboardBinding
 import com.example.finanance.model.finModelClass
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputLayout
-
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
-
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -30,7 +32,7 @@ class DashboardFragment : Fragment() {
         val category=resources.getStringArray(R.array.category)
         val arrayadapter=ArrayAdapter(requireContext(),R.layout.dropdown_category,category)
         binding.autoCompleteTextView.setAdapter(arrayadapter)
-        
+
         val type =getView()?.findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
         val textinput =getView()?.findViewById<TextInputLayout>(R.id.textinputlayout)
         type?.onItemClickListener = object : AdapterView.OnItemClickListener{
@@ -63,7 +65,53 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val datepick = getView()?.findViewById<EditText>(R.id.date)
         val save= getView()?.findViewById<Button>(R.id.Save)
+        val datetext= getView()?.findViewById<EditText>(R.id.date)
+
+        val today = MaterialDatePicker.todayInUtcMilliseconds()
+        val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+        calendar.timeInMillis = today
+        calendar[Calendar.YEAR] = 2020
+        val startDate = calendar.timeInMillis
+
+        calendar.timeInMillis = today
+        calendar[Calendar.YEAR] = 2023
+        val endDate = calendar.timeInMillis
+
+
+        val builder = MaterialDatePicker.Builder.datePicker()
+        val constraints: CalendarConstraints.Builder = CalendarConstraints.Builder()
+        constraints.setStart(startDate)
+        constraints.setEnd(endDate)
+
+        builder.setCalendarConstraints(constraints.build())
+
+        val datePicker= builder.build()
+
+        datepick?.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+        datePicker.show(childFragmentManager, "tag");
+                datePicker.addOnPositiveButtonClickListener {
+                    val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    val dat = sdf.format(it)
+                    datetext?.setText(dat.toString())
+                }
+            }}
+            datepick?.setOnClickListener{view ->
+                datePicker.show(childFragmentManager, "tag");
+                datePicker.addOnPositiveButtonClickListener {
+                    // Respond to positive button click.
+                    //  date?.text=datePicker.getHeaderText()
+                    val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    val dat = sdf.format(it)
+                    datetext?.setText(dat.toString())
+
+            }
+
+
+        }
+
         save?.setOnClickListener{ view ->
             addRecord()
         }
@@ -80,6 +128,7 @@ class DashboardFragment : Fragment() {
       val typ= type?.text.toString()
       val mode="CASH"
       val transid= null
+
       val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
       if (!amoun.isEmpty() && !dategiven.isEmpty()) {
           val status = databaseHandler.addTransactions(finModelClass(0, Integer.parseInt(amoun), typ,dategiven,addnote,mode,transid))

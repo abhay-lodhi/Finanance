@@ -5,12 +5,13 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.database.getIntOrNull
+import com.example.finanance.model.categoryModelClass
 import com.example.finanance.model.finModelClass
 import com.example.finanance.model.typeModelClass
-import java.time.LocalDate
-import java.util.*
+
 
 class DBHandler(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
@@ -84,19 +85,19 @@ class DBHandler(context: Context) :
         )
          val db2= this.readableDatabase
         var cs: Cursor? = null
-         cs= db2.rawQuery("SELECT "+ty+" FROM "+ TABLE_Statics+" WHERE "+ KEY_MONTHYEAR + " = '" +tran.Date.dropLast(3)+"'",null)
+         cs= db2.rawQuery("SELECT "+ty+" FROM "+ TABLE_Statics+" WHERE "+ KEY_MONTHYEAR + " = '" +tran.Date.drop(3)+"'",null)
        if(cs.moveToFirst()){
            var amt=cs.getIntOrNull(cs.getColumnIndex(ty))
            if(amt==null){
              amt=0
            }
            amt=amt+tran.Amount
-          db.execSQL("UPDATE "+ TABLE_Statics+" SET "+ ty +" = "+ amt +" WHERE "+ KEY_MONTHYEAR + " = '" +tran.Date.dropLast(3)+"'")
+          db.execSQL("UPDATE "+ TABLE_Statics+" SET "+ ty +" = "+ amt +" WHERE "+ KEY_MONTHYEAR + " = '" +tran.Date.drop(3)+"'")
         //   return amt
        }else{
            val content= ContentValues()
            content.put(ty,tran.Amount)
-           content.put(KEY_MONTHYEAR,tran.Date.dropLast(3))
+           content.put(KEY_MONTHYEAR,tran.Date.drop(3))
            db.insert(TABLE_Statics,null,content)
        }
         db.close()
@@ -108,7 +109,7 @@ fun getMonthData(dat: String): typeModelClass {
 val db= this.readableDatabase
     val stats: typeModelClass
     var cs: Cursor? = null
-    cs= db.rawQuery("SELECT * FROM "+ TABLE_Statics+" WHERE "+ KEY_MONTHYEAR + " = '" + dat.toString().dropLast(3)+"'",null)
+    cs= db.rawQuery("SELECT * FROM "+ TABLE_Statics+" WHERE "+ KEY_MONTHYEAR + " = '" + dat.toString().drop(3)+"'",null)
     if(cs.moveToFirst()){
       stats= typeModelClass(cs.getIntOrNull(cs.getColumnIndex(KEY_FOOD)),cs.getIntOrNull(cs.getColumnIndex(
           KEY_BILLS)),cs.getIntOrNull(cs.getColumnIndex(KEY_SHOPPING)),cs.getIntOrNull(cs.getColumnIndex(
@@ -119,6 +120,43 @@ val db= this.readableDatabase
     db.close()
     return stats
 }
+
+    @SuppressLint("Range")
+    fun getMonthdetails(dat: String, cate: String, img : Int): ArrayList<categoryModelClass>{
+        val catList: ArrayList<categoryModelClass> = ArrayList<categoryModelClass>()
+
+        // Query to select all the records from the table.
+        val selectQuery = "SELECT  * FROM "+ TABLE_TRANSACTIONS+" WHERE "+ KEY_TYPE+" = '"+cate+"' AND " + KEY_DAT +" LIKE '"+dat+"'"
+
+        val db = this.readableDatabase
+        // Cursor is used to read the record one by one. Add them to data model class.
+        var cursor: Cursor? = null
+
+        try {
+            cursor = db.rawQuery(selectQuery, null)
+
+        } catch (e: SQLiteException) {
+            db.execSQL(selectQuery)
+            return ArrayList()
+        }
+
+        var id: Int
+        var amount: Int
+        var dat: String
+
+        if (cursor.moveToFirst()) {
+            do {
+                id =cursor.getInt(cursor.getColumnIndex(KEY_ID))
+                amount = cursor.getInt(cursor.getColumnIndex(KEY_AMOUNT))
+                dat = cursor.getString(cursor.getColumnIndex(KEY_DAT))
+
+                val cat = categoryModelClass(id = id, image=img , Amount = amount,date= dat )
+                catList.add(cat)
+            } while (cursor.moveToNext())
+        }
+        return catList
+
+    }
 //    fun getRow(tran: finModelClass): finModelClass{
 //      val db= this.readableDatabase
 //

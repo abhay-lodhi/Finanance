@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
-    
+
     <EditText
         android:id="@+id/amount"
         android:layout_width="0dp"
@@ -26,7 +26,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-      />
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textinputlayout"
@@ -79,7 +79,7 @@
         android:paddingTop="5dp"
         android:drawablePadding="15dp"
         android:theme="@style/EditTextTheme"
-        android:inputType="date"
+        android:editable="false"
         android:minHeight="60dp"
         android:drawableStart="@drawable/ic_outline_calendar_month_24"
         app:layout_constraintEnd_toEndOf="parent"
@@ -132,14 +132,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="22dp"
-        android:text="ADD"
-        android:layout_gravity="center"
-        android:textColor="@color/black2"
-        android:id="@+id/toolbar_title" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:text="ADD"
+            android:layout_gravity="center"
+            android:textColor="@color/black2"
+            android:id="@+id/toolbar_title" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
