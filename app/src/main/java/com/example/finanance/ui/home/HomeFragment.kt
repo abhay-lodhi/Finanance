@@ -1,13 +1,17 @@
 package com.example.finanance.ui.home
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.finanance.R
 import com.example.finanance.databinding.FragmentHomeBinding
+import ir.mahozad.android.PieChart
 
 class HomeFragment : Fragment() {
 
@@ -28,15 +32,29 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.textHome
+//        homeViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        getView()?.findViewById<EditText>(R.id.amount)
+
+        val pieChart =getView()?.findViewById<PieChart>(R.id.homechart)
+        pieChart?.slices = listOf(
+            PieChart.Slice(0.5f, Color.BLACK),
+            PieChart.Slice(0.4f, Color.GRAY),
+            PieChart.Slice(0.05f, Color.YELLOW),
+            PieChart.Slice(0.05f, Color.RED)
+        )
         return root
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+
+
     }
+
+
+
 }
