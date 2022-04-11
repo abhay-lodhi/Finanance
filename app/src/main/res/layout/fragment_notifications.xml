@@ -6,17 +6,247 @@
     android:layout_height="match_parent"
     tools:context=".ui.notifications.NotificationsFragment">
 
+
     <TextView
-        android:id="@+id/text_notifications"
+        android:id="@+id/foodtext"
+        android:layout_width="260dp"
+        android:layout_height="58dp"
+        android:layout_weight="1"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:text="Food"
+        android:textSize="22sp"
+        app:drawableStartCompat ="@drawable/ic_outline_fastfood_24"
+        app:layout_constraintBottom_toTopOf="@+id/billstext"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/billstext"
+        android:layout_width="260dp"
+        android:layout_height="58dp"
+        android:layout_weight="1"
+        app:drawableStartCompat ="@drawable/ic_outline_attach_money_24"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:text="Bills"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/shoppingtext"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/shoppingtext"
+        android:layout_width="260dp"
+        android:layout_height="58dp"
+        android:layout_weight="1"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:text="Shopping"
+        android:textSize="22sp"
+        app:drawableStartCompat ="@drawable/ic_outline_attach_money_24"
+        app:layout_constraintBottom_toTopOf="@+id/dailytext"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/dailytext"
+        android:layout_width="260dp"
+        android:layout_height="58dp"
+        android:layout_weight="1"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:text="Daily Needs"
+        android:textSize="22sp"
+        app:drawableStartCompat ="@drawable/ic_outline_attach_money_24"
+        app:layout_constraintBottom_toTopOf="@+id/otherstext"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/otherstext"
+        android:layout_width="260dp"
+        android:layout_height="58dp"
+        android:layout_weight="1"
+        android:drawablePadding="15dp"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:text="Others"
+        android:textSize="22sp"
+        android:layout_marginBottom="70dp"
+        app:drawableStartCompat ="@drawable/ic_outline_attach_money_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="TextView"
+        android:gravity="bottom"
+        android:textSize="25sp"
+        android:paddingLeft="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/foodtext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColorHint="@color/black2"
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:src="@tools:sample/avatars" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+
+        android:layout_width="409dp"
+
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="18"
+            android:backgroundTint="@color/white"
+            />
+        <Button
+            android:id="@+id/enter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="18"
+            android:text="Button" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/left_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_outline_chevron_left_24" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/right_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            android:minWidth="48dp"
+
+            android:minHeight="48dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_chevron_right_24" />
+
+    </LinearLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorOnPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:text="Stats"
+            android:layout_gravity="center"
+            android:textColor="@color/black2"
+            android:id="@+id/toolbar_title" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_outline_info_24"
+            android:layout_marginEnd="17dp"
+            />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/otherstxtamt"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:text="othersamt"
+        android:gravity="center_vertical"
+        android:drawablePadding="15dp"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="70dp"
+        app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
+        app:layout_constraintStart_toEndOf="@+id/otherstext" />
+
+    <TextView
+        android:id="@+id/dailytxtamt"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:text="dailyamt"
+        android:gravity="center_vertical"
+        android:drawablePadding="15dp"
+        android:textSize="22sp"
+        app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
+        app:layout_constraintBottom_toTopOf="@+id/otherstxtamt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dailytext" />
+
+    <TextView
+        android:id="@+id/shoppingtxtamt"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:text="shoppingamt"
+        android:drawablePadding="15dp"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/dailytxtamt"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center_vertical"
+        app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
+        app:layout_constraintStart_toEndOf="@+id/shoppingtext" />
+
+    <TextView
+        android:id="@+id/billstxtamt"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:text="billsamt"
+        android:drawablePadding="15dp"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/shoppingtxtamt"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center_vertical"
+        app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
+        app:layout_constraintStart_toEndOf="@+id/billstext" />
+
+    <TextView
+        android:id="@+id/foodtxtamt"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:drawablePadding="15dp"
+        android:textSize="22sp"
+        android:text="foodamt"
+        android:gravity="center_vertical"
+        app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
+        app:layout_constraintBottom_toTopOf="@+id/billstxtamt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/foodtext" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
