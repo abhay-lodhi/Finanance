@@ -126,7 +126,7 @@ val db= this.readableDatabase
         val catList: ArrayList<categoryModelClass> = ArrayList<categoryModelClass>()
 
         // Query to select all the records from the table.
-        val selectQuery = "SELECT  * FROM "+ TABLE_TRANSACTIONS+" WHERE "+ KEY_TYPE+" = '"+cate+"' AND " + KEY_DAT +" LIKE '"+dat+"'"
+        val selectQuery = "SELECT  * FROM "+ TABLE_TRANSACTIONS+" WHERE "+ KEY_TYPE+" = '"+cate+"' AND " + KEY_DAT +" LIKE '"+dat+"' ORDER BY "+ KEY_DAT+" DESC"
 
         val db = this.readableDatabase
         // Cursor is used to read the record one by one. Add them to data model class.

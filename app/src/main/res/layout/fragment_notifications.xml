@@ -119,13 +119,9 @@
             android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:layout_weight="18"
-            android:maxLines="1"
             android:backgroundTint="@color/white"
-            android:text="TextView" />
-
-
+            />
         <Button
             android:id="@+id/enter"
             android:layout_width="wrap_content"

@@ -1,6 +1,7 @@
 package com.example.finanance.ui.notifications
 
 
+
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -55,6 +56,7 @@ class NotificationsFragment : Fragment() {
 
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -64,8 +66,8 @@ class NotificationsFragment : Fragment() {
         }else{
             datelocal = "01/" +monthglob.toString()+"/"+yearglob.toString()
         }
-         binding.search.setText(digittomonths[monthglob]+" ,"+yearglob)
 
+       binding.search.setText( digittomonths[monthglob].toString()+" ,"+ yearglob.toString())
 
         val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
         val stats = databaseHandler.getMonthData(datelocal)
@@ -95,7 +97,7 @@ class NotificationsFragment : Fragment() {
         }else
             binding.otherstxtamt.setText(stats.OTHERS.toString())
 
-       // val searchmonth = getView()?.findViewById<EditText>(R.id.search)
+       val searchmonth = getView()?.findViewById<EditText>(R.id.search)
         val enter= getView()?.findViewById<Button>(R.id.enter)
         val left = getView()?.findViewById<ImageView>(R.id.left_icon)
         val right = getView()?.findViewById<ImageView>(R.id.right_icon)
@@ -153,8 +155,7 @@ class NotificationsFragment : Fragment() {
         val year = monthyear[size-4].toString()+ monthyear[size-3].toString()+monthyear[size-2].toString()+monthyear[size-1].toString()
         val month = monthstodigit[mon]
 
-        yearglob=Integer.parseInt(year)
-        monthglob= Integer.parseInt(month)
+
 
         val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
         val stats = databaseHandler.getMonthData("01/"+month+"/"+year)
@@ -165,8 +166,11 @@ class NotificationsFragment : Fragment() {
                 "No Data To show",
                 Toast.LENGTH_LONG
             ).show()
+             binding.search.setText(digittomonths[monthglob]+" ,"+yearglob)
         }else {
-            binding.search.setText(digittomonths[monthglob]+" ,"+yearglob)
+            yearglob=Integer.parseInt(year)
+            monthglob= Integer.parseInt(month)
+
             if(stats.FOOD==null){
                 binding.foodtxtamt.setText("0")
             }else
