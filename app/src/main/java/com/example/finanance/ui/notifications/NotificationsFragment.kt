@@ -40,6 +40,10 @@ class NotificationsFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    override fun onResume() {
+        super.onResume()
+        binding.search.setText(digittomonths[monthglob].toString()+" ,"+ yearglob.toString())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -67,7 +71,7 @@ class NotificationsFragment : Fragment() {
             datelocal = "01/" +monthglob.toString()+"/"+yearglob.toString()
         }
 
-       binding.search.setText( digittomonths[monthglob].toString()+" ,"+ yearglob.toString())
+    //   binding.search.setText( digittomonths[monthglob].toString()+" ,"+ yearglob.toString())
 
         val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
         val stats = databaseHandler.getMonthData(datelocal)
@@ -146,9 +150,9 @@ class NotificationsFragment : Fragment() {
         dialog.show()
     }
 
+
     fun search(){
        val searchmonth= getView()?.findViewById<EditText>(R.id.search)
-
         val monthyear: CharArray = searchmonth?.text.toString().trim().toCharArray()
         val size:Int= monthyear.size
         val mon = monthyear[0].toString()+ monthyear[1].toString() +monthyear[2].toString()
