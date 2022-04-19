@@ -200,7 +200,7 @@ val db= this.readableDatabase
                 dat= format2.format(date)
 
                 when (cat) {
-                    "FOOD" -> img= R.drawable.ic_outline_fastfood_24
+                    "FOOD" -> img= R.drawable.iconfood
                     "BILLS" ->  img= R.drawable.ic_outline_currency_rupee_24
                     "SHOPPING" -> img= R.drawable.shoping
                     "Daily Needs"-> img= R.drawable.icone

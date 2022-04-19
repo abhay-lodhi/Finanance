@@ -162,7 +162,7 @@ class NotificationsFragment : Fragment() {
         setDataToPieChart()
 
         food?.setOnClickListener{ view ->
-            dialog("FOOD",R.drawable.ic_outline_fastfood_24)
+            dialog("FOOD",R.drawable.iconfood)
         }
         bills?.setOnClickListener{ view ->
             dialog("BILLS",R.drawable.ic_outline_attach_money_24)
@@ -515,7 +515,7 @@ class NotificationsFragment : Fragment() {
 
         //add text in center
         pieChart.setDrawCenterText(true);
-        pieChart.centerText = "Total Amount"
+        pieChart.centerText = "Total Amount= "+(food+bills+shopp+daily+other).toInt().toString()
 
 
 

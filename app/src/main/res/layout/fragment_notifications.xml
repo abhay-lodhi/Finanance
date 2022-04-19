@@ -19,7 +19,7 @@
         android:text="Food"
         android:layout_marginLeft="5dp"
         android:textSize="18sp"
-        app:drawableStartCompat ="@drawable/ic_outline_fastfood_24"
+        app:drawableStartCompat ="@drawable/iconfood"
         app:layout_constraintBottom_toTopOf="@+id/billstext"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -80,7 +80,7 @@
         android:paddingStart="10dp"
         android:text="Others"
         android:textSize="18sp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="60dp"
         app:drawableStartCompat ="@drawable/icongift"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -103,6 +103,7 @@
         android:id="@+id/pieChart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -198,7 +199,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="60dp"
         app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
         app:layout_constraintStart_toEndOf="@+id/otherstext" />
 

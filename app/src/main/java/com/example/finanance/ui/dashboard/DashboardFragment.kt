@@ -40,7 +40,7 @@ class DashboardFragment : Fragment() {
                 val item= arrayadapter?.getItem(position)
                 when (item) {
                     "FOOD" -> {
-                        textinput?.setStartIconDrawable(R.drawable.ic_outline_fastfood_24)
+                        textinput?.setStartIconDrawable(R.drawable.iconfood)
                     }
                     "BILLS" ->  textinput?.setStartIconDrawable(R.drawable.ic_outline_currency_rupee_24)
                     "SHOPPING"  -> textinput?.setStartIconDrawable(R.drawable.shoping)

@@ -180,7 +180,8 @@ val tV= getView()?.findViewById<TextView>(R.id.tv)
 
         //add text in center
         pieChart.setDrawCenterText(true);
-        pieChart.centerText = "Total Amount"
+        pieChart.centerText = "Total Amount= "+(food+bills+shopp+daily+other).toInt().toString()
+
 
 
 
