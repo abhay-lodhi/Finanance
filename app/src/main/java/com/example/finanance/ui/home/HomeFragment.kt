@@ -1,19 +1,21 @@
 package com.example.finanance.ui.home
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finanance.HomePageAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.example.finanance.DB.DBHandler
 import com.example.finanance.R
+import com.example.finanance.adapter.category_recycler
+import com.example.finanance.adapter.home_recycler
 import com.example.finanance.databinding.FragmentHomeBinding
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.example.finanance.model.categoryModelClass
+import com.example.finanance.model.homeRecyclerModelClass
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -36,56 +38,57 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        getView()?.findViewById<EditText>(R.id.amount)
-
-//        val pieChart =getView()?.findViewById<PieChart>(R.id.homechart)
-//        pieChart?.slices = listOf(
-//            PieChart.Slice(0.5f, Color.BLACK),
-//            PieChart.Slice(0.4f, Color.GRAY),
-//            PieChart.Slice(0.05f, Color.YELLOW),
-//            PieChart.Slice(0.05f, Color.RED)
-
-        val sdf = SimpleDateFormat("EEE, MMMM dd, yyyy")
-        val current = sdf.format(Date())
-
-        tv.text = "$current"
-
-        recyclerview.layoutManager= LinearLayoutManager(requireContext())
-
-        val itemss=fetchdata()
-
-        val adapter= HomePageAdapter(itemss)
-        recyclerview.adapter=adapter
-//        )
         return root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val sdf = SimpleDateFormat("EEE, MMMM dd, yyyy")
+        val current = sdf.format(Date())
+val tV= getView()?.findViewById<TextView>(R.id.tv)
+        tV?.text = "$current"
 
+
+        val recyclerview = getView()?.findViewById<RecyclerView>(R.id.rvhome)
+         val tvrecords = getView()?.findViewById<TextView>(R.id.tvNoRecordsAvailable)
+        if (getItemsList().size > 0) {
+
+            recyclerview?.visibility = View.VISIBLE
+             tvrecords?.visibility = View.GONE
+          //  tvrecors?.text="heyyy"
+
+            // Set the LayoutManager that this RecyclerView will use.
+            recyclerview?.layoutManager = LinearLayoutManager(requireContext())
+            // Adapter class is initialized and list is passed in the param.
+            val itemAdapter = home_recycler(getItemsList())
+            // adapter instance is set to the recyclerview to inflate the items.
+
+            recyclerview?.adapter = itemAdapter
+
+        } else {
+          //  tvrecors?.text="heyyy1"
+            recyclerview?.visibility = View.GONE
+            tvrecords?.visibility = View.VISIBLE
+        }
+
+//        recyclerview?.layoutManager = LinearLayoutManager(requireContext())
+//        val databaseHandler: DBHandler = DBHandler(requireContext())
+//        val catList: ArrayList<homeRecyclerModelClass> = databaseHandler.getdetails()
+//        val  catAdapter = home_recycler(catList)
+//        recyclerview?.adapter= catAdapter
+    }
+
+    private fun getItemsList(): ArrayList<homeRecyclerModelClass> {
+        //creating the instance of DatabaseHandler class
+        val databaseHandler: DBHandler = DBHandler(requireContext())
+        //calling the viewEmployee method of DatabaseHandler class to read the records
+        val empList: ArrayList<homeRecyclerModelClass> = databaseHandler.getdetails()
+
+        return empList
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-
-
     }
-
-    private fun fetchdata(): ArrayList<String>
-    {
-        val list=ArrayList<String>()
-        for(i in 0..100)
-        {
-            list.add("Item $i")
-        }
-        return list
-    }
-
-
-
 }

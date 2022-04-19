@@ -117,17 +117,14 @@
 
         <EditText
             android:id="@+id/search"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="18"
             android:backgroundTint="@color/white"
             />
-        <Button
-            android:id="@+id/enter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="18"
-            android:text="Button" />
+
 
         <androidx.constraintlayout.utils.widget.ImageFilterButton
             android:id="@+id/left_icon"

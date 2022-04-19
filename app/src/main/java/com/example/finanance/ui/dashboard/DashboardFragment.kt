@@ -43,7 +43,9 @@ class DashboardFragment : Fragment() {
                         textinput?.setStartIconDrawable(R.drawable.ic_outline_fastfood_24)
                     }
                     "BILLS" ->  textinput?.setStartIconDrawable(R.drawable.ic_outline_attach_money_24)
-                    "CLOTHING" -> textinput?.setStartIconDrawable(R.drawable.ic_outline_attach_money_24)
+                    "SHOPPING"  -> textinput?.setStartIconDrawable(R.drawable.ic_outline_attach_money_24)
+                    "Daily Needs"  -> textinput?.setStartIconDrawable(R.drawable.ic_outline_attach_money_24)
+                    "OTHERS"  -> textinput?.setStartIconDrawable(R.drawable.ic_outline_attach_money_24)
                     else -> { // Note the block
                         print("x is neither 1 nor 2")
                     }
