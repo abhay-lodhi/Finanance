@@ -39,6 +39,7 @@ class DashboardFragment : Fragment() {
             override fun onItemClick(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
                 val item= arrayadapter?.getItem(position)
                 when (item) {
+
                     "FOOD" -> {
                         textinput?.setStartIconDrawable(R.drawable.iconfood)
                     }
