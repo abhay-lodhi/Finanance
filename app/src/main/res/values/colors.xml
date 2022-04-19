@@ -12,5 +12,9 @@
     <color name="red">#BF1B1B</color>
     <color name="black2">#2E2C2C</color>
 
+
+    <color name="lightgrey">#303030</color>
+    <color name="golden">#D9A327</color>
+
 </resources>
 

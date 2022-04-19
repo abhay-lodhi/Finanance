@@ -29,6 +29,7 @@ class category_recycler (private val mList: ArrayList<categoryModelClass>) : Rec
         holder.amount.text = ItemsViewModel.Amount.toString()
         holder.dte.text= ItemsViewModel.date
 
+
     }
 
 
