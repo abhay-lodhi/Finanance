@@ -8,9 +8,14 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.database.getIntOrNull
+import com.example.finanance.R
 import com.example.finanance.model.categoryModelClass
 import com.example.finanance.model.finModelClass
+import com.example.finanance.model.homeRecyclerModelClass
 import com.example.finanance.model.typeModelClass
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class DBHandler(context: Context) :
@@ -157,6 +162,64 @@ val db= this.readableDatabase
         return catList
 
     }
+
+    @SuppressLint("Range")
+    fun getdetails(): ArrayList<homeRecyclerModelClass>{
+        val catList: ArrayList<homeRecyclerModelClass> = ArrayList<homeRecyclerModelClass>()
+
+        // Query to select all the records from the table.
+        val selectQuery = "SELECT  * FROM "+ TABLE_TRANSACTIONS +" ORDER BY "+ KEY_DAT+" DESC"
+
+        val db = this.readableDatabase
+        // Cursor is used to read the record one by one. Add them to data model class.
+        var cursor: Cursor? = null
+
+        try {
+            cursor = db.rawQuery(selectQuery, null)
+
+        } catch (e: SQLiteException) {
+            db.execSQL(selectQuery)
+            return ArrayList()
+        }
+
+        var id: Int
+        var amount: Int
+        var dat: String
+        var cat: String
+        var img: Int= R.drawable.ic_outline_attach_money_24
+
+        if (cursor.moveToFirst()) {
+            do {
+                id =cursor.getInt(cursor.getColumnIndex(KEY_ID))
+                cat=cursor.getString(cursor.getColumnIndex(KEY_TYPE))
+                amount = cursor.getInt(cursor.getColumnIndex(KEY_AMOUNT))
+                dat = cursor.getString(cursor.getColumnIndex(KEY_DAT))
+                val format1 = SimpleDateFormat("dd/MM/yyyy")
+                val format2 = SimpleDateFormat("dd-MMM-yyyy")
+                val date: Date = format1.parse(dat)
+                dat= format2.format(date)
+
+                when (cat) {
+                    "FOOD" -> img= R.drawable.ic_outline_fastfood_24
+                    "BILLS" ->  img= R.drawable.ic_outline_attach_money_24
+                    "SHOPPING" -> img= R.drawable.ic_dashboard_black_24dp
+                    "Daily Needs"-> img= R.drawable.ic_baseline_chevron_right_24
+                    "OTHERS"-> img= R.drawable.ic_outline_info_24
+
+                    else -> { // Note the block
+                        print("x is neither 1 nor 2")
+                    }
+                }
+
+                val row = homeRecyclerModelClass(id = id, cat=cat, image=img , Amount = amount,date= dat )
+                catList.add(row)
+            } while (cursor.moveToNext())
+        }
+        return catList
+
+    }
+
+
 //    fun getRow(tran: finModelClass): finModelClass{
 //      val db= this.readableDatabase
 //

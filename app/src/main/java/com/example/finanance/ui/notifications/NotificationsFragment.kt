@@ -3,11 +3,15 @@ package com.example.finanance.ui.notifications
 
 
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import android.widget.TextView.OnEditorActionListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,8 +19,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finanance.DB.DBHandler
 import com.example.finanance.R
 import com.example.finanance.adapter.category_recycler
+import com.example.finanance.adapter.home_recycler
 import com.example.finanance.databinding.FragmentNotificationsBinding
 import com.example.finanance.model.categoryModelClass
+import com.example.finanance.model.homeRecyclerModelClass
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -102,7 +108,6 @@ class NotificationsFragment : Fragment() {
             binding.otherstxtamt.setText(stats.OTHERS.toString())
 
        val searchmonth = getView()?.findViewById<EditText>(R.id.search)
-        val enter= getView()?.findViewById<Button>(R.id.enter)
         val left = getView()?.findViewById<ImageView>(R.id.left_icon)
         val right = getView()?.findViewById<ImageView>(R.id.right_icon)
         val food= getView()?.findViewById<TextView>(R.id.foodtext)
@@ -111,6 +116,13 @@ class NotificationsFragment : Fragment() {
         val daily= getView()?.findViewById<TextView>(R.id.dailytext)
         val others= getView()?.findViewById<TextView>(R.id.otherstext)
 
+        searchmonth?.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                search()
+                return@OnEditorActionListener true
+            }
+            false
+        })
 
         food?.setOnClickListener{ view ->
             dialog("FOOD",R.drawable.ic_outline_fastfood_24)
@@ -127,9 +139,6 @@ class NotificationsFragment : Fragment() {
         others?.setOnClickListener{ view ->
             dialog("OTHERS",R.drawable.ic_outline_fastfood_24)
         }
-        enter?.setOnClickListener{ view ->
-            search()
-        }
         left?.setOnClickListener{ view ->
            before()
         }
@@ -142,12 +151,41 @@ class NotificationsFragment : Fragment() {
         this.dialog = Dialog(requireContext())
         this.dialog.setContentView(R.layout.category_dialog)
         val recyclerview = this.dialog.findViewById<RecyclerView>(R.id.recycler_cat)
-        recyclerview?.layoutManager = LinearLayoutManager(requireContext())
-        val databaseHandler: DBHandler = DBHandler(requireContext())
-        val catList: ArrayList<categoryModelClass> = databaseHandler.getMonthdetails("%"+monthglob.toString()+"/"+yearglob.toString(), type,img)
-        this.catAdapter = category_recycler(catList)
-        recyclerview?.adapter= this.catAdapter
+        val tvrecords = this.dialog.findViewById<TextView>(R.id.tvNoRecordsAvailable)
+        if (getItemsList(type, img).size > 0) {
+
+            recyclerview?.visibility = View.VISIBLE
+            tvrecords?.visibility = View.GONE
+
+
+            // Set the LayoutManager that this RecyclerView will use.
+            recyclerview?.layoutManager = LinearLayoutManager(requireContext())
+            // Adapter class is initialized and list is passed in the param.
+            this.catAdapter = category_recycler(getItemsList(type,img))
+            // adapter instance is set to the recyclerview to inflate the items.
+
+            recyclerview?.adapter = this.catAdapter
+
+        } else {
+
+            recyclerview?.visibility = View.GONE
+            tvrecords?.visibility = View.VISIBLE
+        }
+       // val recyclerview = this.dialog.findViewById<RecyclerView>(R.id.recycler_cat)
+//        recyclerview?.layoutManager = LinearLayoutManager(requireContext())
+//        val databaseHandler: DBHandler = DBHandler(requireContext())
+//        val catList: ArrayList<categoryModelClass> = databaseHandler.getMonthdetails("%"+monthglob.toString()+"/"+yearglob.toString(), type,img) //     this.catAdapter = category_recycler(catList)
+//        recyclerview?.adapter= this.catAdapter
         dialog.show()
+    }
+
+
+    private fun getItemsList(type: String, img: Int): ArrayList<categoryModelClass> {
+        //creating the instance of DatabaseHandler class
+        val databaseHandler: DBHandler = DBHandler(requireContext())
+        val catList: ArrayList<categoryModelClass> = databaseHandler.getMonthdetails("%"+monthglob.toString()+"/"+yearglob.toString(), type , img )
+
+        return catList
     }
 
 
@@ -201,7 +239,9 @@ class NotificationsFragment : Fragment() {
                 binding.otherstxtamt.setText(stats.OTHERS.toString())
         }
 
-
+        val `in`: InputMethodManager? =
+            getActivity()?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        `in`?.hideSoftInputFromWindow(searchmonth?.getWindowToken(), 0)
     }
 
 
