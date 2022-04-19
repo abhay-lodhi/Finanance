@@ -19,7 +19,7 @@
         android:paddingTop="5dp"
         android:textSize="18dp"
         android:minHeight="60dp"
-        android:hint="  ₹   Ammount "
+        android:hint="  ₹   Amount "
         android:theme="@style/EditTextTheme"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
