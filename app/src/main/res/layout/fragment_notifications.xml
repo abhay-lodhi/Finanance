@@ -10,6 +10,7 @@
     <TextView
         android:id="@+id/foodtext"
         android:layout_width="260dp"
+
         android:layout_height="58dp"
         android:layout_weight="1"
         android:drawablePadding="15dp"
