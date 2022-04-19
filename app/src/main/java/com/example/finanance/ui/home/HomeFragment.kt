@@ -172,15 +172,15 @@ val tV= getView()?.findViewById<TextView>(R.id.tv)
         pieChart.animateY(1400, Easing.EaseInOutQuad)
 
         //create hole in center
-        pieChart.holeRadius = 58f
-        pieChart.transparentCircleRadius = 61f
+        pieChart.holeRadius = 75f
+        pieChart.transparentCircleRadius = 0f
         pieChart.isDrawHoleEnabled = true
         pieChart.setHoleColor(Color.WHITE)
 
 
         //add text in center
         pieChart.setDrawCenterText(true);
-        pieChart.centerText = "Total Amount= "+(food+bills+shopp+daily+other).toInt().toString()
+        pieChart.centerText = "This Month= "+(food+bills+shopp+daily+other).toInt().toString()
 
 
 
