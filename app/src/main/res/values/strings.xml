@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">FinManager</string>
-    <string name="title_home">Home op</string>
-    <string name="title_dashboard">ADD</string>
-    <string name="title_notifications">Statics</string>
+    <string name="app_name">FinMan</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Add</string>
+    <string name="title_notifications">Statistics</string>
     <string-array name="category">
         <item>FOOD</item>
         <item>BILLS</item>
@@ -17,5 +17,9 @@
         <item>@drawable/ic_outline_chevron_left_24</item>
         <item>@drawable/ic_outline_fastfood_24</item>
         <item>@drawable/ic_dashboard_black_24dp</item>
+        //addition
+        <item>@drawable/shoping</item>
+        <item>@drawable/icone</item>
+
     </integer-array>
 </resources>

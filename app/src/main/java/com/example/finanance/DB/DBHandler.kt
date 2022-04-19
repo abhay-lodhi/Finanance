@@ -186,7 +186,7 @@ val db= this.readableDatabase
         var amount: Int
         var dat: String
         var cat: String
-        var img: Int= R.drawable.ic_outline_attach_money_24
+        var img: Int= R.drawable.ic_outline_currency_rupee_24
 
         if (cursor.moveToFirst()) {
             do {
@@ -201,10 +201,10 @@ val db= this.readableDatabase
 
                 when (cat) {
                     "FOOD" -> img= R.drawable.ic_outline_fastfood_24
-                    "BILLS" ->  img= R.drawable.ic_outline_attach_money_24
-                    "SHOPPING" -> img= R.drawable.ic_dashboard_black_24dp
-                    "Daily Needs"-> img= R.drawable.ic_baseline_chevron_right_24
-                    "OTHERS"-> img= R.drawable.ic_outline_info_24
+                    "BILLS" ->  img= R.drawable.ic_outline_currency_rupee_24
+                    "SHOPPING" -> img= R.drawable.shoping
+                    "Daily Needs"-> img= R.drawable.icone
+                    "OTHERS"-> img= R.drawable.icongift
 
                     else -> { // Note the block
                         print("x is neither 1 nor 2")
