@@ -4,6 +4,7 @@ package com.example.finanance.ui.notifications
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,13 @@ import com.example.finanance.adapter.home_recycler
 import com.example.finanance.databinding.FragmentNotificationsBinding
 import com.example.finanance.model.categoryModelClass
 import com.example.finanance.model.homeRecyclerModelClass
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.PercentFormatter
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,6 +40,12 @@ class NotificationsFragment : Fragment() {
     private var _binding: FragmentNotificationsBinding? = null
     private lateinit var catAdapter: category_recycler
     private lateinit var dialog: Dialog
+    private lateinit var pieChart: PieChart
+    var food =0f
+    var bills=0f
+    var shopp=0f
+    var daily=0f
+    var other =0f
 
 
     val cur = Calendar.getInstance().time
@@ -69,6 +83,7 @@ class NotificationsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        pieChart = requireView()!!.findViewById<PieChart>(R.id.pieChart)
 
         val datelocal:String
         if(monthglob<10){
@@ -84,28 +99,46 @@ class NotificationsFragment : Fragment() {
 
         if(stats.FOOD==null){
            binding.foodtxtamt.setText("0")
-        }else
+            food=0f
+        }else{
             binding.foodtxtamt.setText(stats.FOOD.toString())
+        food=stats.FOOD!!.toFloat()
+        }
 
         if(stats.BILLS==null){
             binding.billstxtamt.setText("0")
-        }else
+            bills=0f
+        }else{
             binding.billstxtamt.setText(stats.BILLS.toString())
+            bills=stats.BILLS!!.toFloat()
+        }
 
         if(stats.SHOPPING==null){
             binding.shoppingtxtamt.setText("0")
-        }else
+            shopp=0f
+        }else{
             binding.shoppingtxtamt.setText(stats.SHOPPING.toString())
+        shopp=stats.SHOPPING!!.toFloat()
+        }
 
         if(stats.Daily==null){
             binding.dailytxtamt.setText("0")
-        }else
+            daily=0f
+        }else{
             binding.dailytxtamt.setText(stats.Daily.toString())
+        daily=stats.Daily!!.toFloat()
+        }
 
         if(stats.OTHERS==null){
             binding.otherstxtamt.setText("0")
-        }else
+            other= 0f
+        }else{
             binding.otherstxtamt.setText(stats.OTHERS.toString())
+        other=stats.OTHERS!!.toFloat()
+        }
+        initPieChart()
+
+        setDataToPieChart()
 
        val searchmonth = getView()?.findViewById<EditText>(R.id.search)
         val left = getView()?.findViewById<ImageView>(R.id.left_icon)
@@ -124,20 +157,24 @@ class NotificationsFragment : Fragment() {
             false
         })
 
+        initPieChart()
+
+        setDataToPieChart()
+
         food?.setOnClickListener{ view ->
             dialog("FOOD",R.drawable.ic_outline_fastfood_24)
         }
         bills?.setOnClickListener{ view ->
-            dialog("BILLS",R.drawable.ic_outline_fastfood_24)
+            dialog("BILLS",R.drawable.ic_outline_attach_money_24)
         }
         shopp?.setOnClickListener{ view ->
-            dialog("SHOPPING",R.drawable.ic_outline_fastfood_24)
+            dialog("SHOPPING",R.drawable.shoping)
         }
         daily?.setOnClickListener{ view ->
-            dialog("Daily Needs",R.drawable.ic_outline_fastfood_24)
+            dialog("Daily Needs",R.drawable.icone)
         }
         others?.setOnClickListener{ view ->
-            dialog("OTHERS",R.drawable.ic_outline_fastfood_24)
+            dialog("OTHERS",R.drawable.icongift)
         }
         left?.setOnClickListener{ view ->
            before()
@@ -215,28 +252,46 @@ class NotificationsFragment : Fragment() {
 
             if(stats.FOOD==null){
                 binding.foodtxtamt.setText("0")
-            }else
+                food=0f
+            }else{
                 binding.foodtxtamt.setText(stats.FOOD.toString())
+                food=stats.FOOD!!.toFloat()
+            }
 
             if(stats.BILLS==null){
                 binding.billstxtamt.setText("0")
-            }else
+                bills=0f
+            }else{
                 binding.billstxtamt.setText(stats.BILLS.toString())
+                bills=stats.BILLS!!.toFloat()
+            }
 
             if(stats.SHOPPING==null){
                 binding.shoppingtxtamt.setText("0")
-            }else
+                shopp=0f
+            }else{
                 binding.shoppingtxtamt.setText(stats.SHOPPING.toString())
+                shopp=stats.SHOPPING!!.toFloat()
+            }
 
             if(stats.Daily==null){
                 binding.dailytxtamt.setText("0")
-            }else
+                daily=0f
+            }else{
                 binding.dailytxtamt.setText(stats.Daily.toString())
+                daily=stats.Daily!!.toFloat()
+            }
 
             if(stats.OTHERS==null){
                 binding.otherstxtamt.setText("0")
-            }else
+                other= 0f
+            }else{
                 binding.otherstxtamt.setText(stats.OTHERS.toString())
+                other=stats.OTHERS!!.toFloat()
+            }
+            initPieChart()
+
+            setDataToPieChart()
         }
 
         val `in`: InputMethodManager? =
@@ -278,28 +333,46 @@ class NotificationsFragment : Fragment() {
             binding.search.setText(digittomonths[monthglob]+" ,"+yearglob)
             if(stats.FOOD==null){
                 binding.foodtxtamt.setText("0")
-            }else
+                food=0f
+            }else{
                 binding.foodtxtamt.setText(stats.FOOD.toString())
+                food=stats.FOOD!!.toFloat()
+            }
 
             if(stats.BILLS==null){
                 binding.billstxtamt.setText("0")
-            }else
+                bills=0f
+            }else{
                 binding.billstxtamt.setText(stats.BILLS.toString())
+                bills=stats.BILLS!!.toFloat()
+            }
 
             if(stats.SHOPPING==null){
                 binding.shoppingtxtamt.setText("0")
-            }else
+                shopp=0f
+            }else{
                 binding.shoppingtxtamt.setText(stats.SHOPPING.toString())
+                shopp=stats.SHOPPING!!.toFloat()
+            }
 
             if(stats.Daily==null){
                 binding.dailytxtamt.setText("0")
-            }else
+                daily=0f
+            }else{
                 binding.dailytxtamt.setText(stats.Daily.toString())
+                daily=stats.Daily!!.toFloat()
+            }
 
             if(stats.OTHERS==null){
                 binding.otherstxtamt.setText("0")
-            }else
+                other= 0f
+            }else{
                 binding.otherstxtamt.setText(stats.OTHERS.toString())
+                other=stats.OTHERS!!.toFloat()
+            }
+            initPieChart()
+
+            setDataToPieChart()
 
         }
         }
@@ -342,33 +415,113 @@ class NotificationsFragment : Fragment() {
             binding.search.setText(digittomonths[monthglob]+" ,"+yearglob)
             if(stats.FOOD==null){
                 binding.foodtxtamt.setText("0")
-            }else
+                food=0f
+            }else{
                 binding.foodtxtamt.setText(stats.FOOD.toString())
+                food=stats.FOOD!!.toFloat()
+            }
 
             if(stats.BILLS==null){
                 binding.billstxtamt.setText("0")
-            }else
+                bills=0f
+            }else{
                 binding.billstxtamt.setText(stats.BILLS.toString())
+                bills=stats.BILLS!!.toFloat()
+            }
 
             if(stats.SHOPPING==null){
                 binding.shoppingtxtamt.setText("0")
-            }else
+                shopp=0f
+            }else{
                 binding.shoppingtxtamt.setText(stats.SHOPPING.toString())
+                shopp=stats.SHOPPING!!.toFloat()
+            }
 
             if(stats.Daily==null){
                 binding.dailytxtamt.setText("0")
-            }else
+                daily=0f
+            }else{
                 binding.dailytxtamt.setText(stats.Daily.toString())
+                daily=stats.Daily!!.toFloat()
+            }
 
             if(stats.OTHERS==null){
                 binding.otherstxtamt.setText("0")
-            }else
+                other= 0f
+            }else{
                 binding.otherstxtamt.setText(stats.OTHERS.toString())
+                other=stats.OTHERS!!.toFloat()
+            }
+            initPieChart()
+
+            setDataToPieChart()
 
         }
 
     }
 
+    private fun initPieChart() {
+        pieChart.setUsePercentValues(true)
+        pieChart.description.text = ""
+        //hollow pie chart
+        pieChart.isDrawHoleEnabled = false
+        pieChart.setTouchEnabled(false)
+        pieChart.setDrawEntryLabels(false)
+        //adding padding
+        pieChart.setExtraOffsets(20f, 0f, 20f, 20f)
+        pieChart.setUsePercentValues(true)
+        pieChart.isRotationEnabled = false
+        pieChart.setDrawEntryLabels(false)
+        pieChart.legend.orientation = Legend.LegendOrientation.VERTICAL
+        pieChart.legend.isWordWrapEnabled = true
+
+    }
+
+
+    private fun setDataToPieChart() {
+        pieChart.setUsePercentValues(false)
+        val dataEntries = ArrayList<PieEntry>()
+        dataEntries.add(PieEntry(food, "Food"))
+        dataEntries.add(PieEntry(bills, "Bills"))
+        dataEntries.add(PieEntry(shopp, "Shopping"))
+        dataEntries.add(PieEntry(daily, "Daily Needs"))
+        dataEntries.add(PieEntry(other, "Other"))
+
+        val colors: ArrayList<Int> = ArrayList()
+        colors.add(Color.parseColor("#4DD0E1"))
+        colors.add(Color.parseColor("#FFF176"))
+        colors.add(Color.parseColor("#FF8A65"))
+        colors.add(Color.parseColor("#FF8A65"))
+        colors.add(Color.parseColor("#FF8A65"))
+
+        val dataSet = PieDataSet(dataEntries, "")
+        val data = PieData(dataSet)
+
+        // In Percentage
+        data.setValueFormatter(PercentFormatter())
+        dataSet.sliceSpace = 3f
+        dataSet.colors = colors
+        pieChart.data = data
+        data.setValueTextSize(15f)
+        pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
+        pieChart.animateY(1400, Easing.EaseInOutQuad)
+
+        //create hole in center
+        pieChart.holeRadius = 58f
+        pieChart.transparentCircleRadius = 61f
+        pieChart.isDrawHoleEnabled = true
+        pieChart.setHoleColor(Color.WHITE)
+
+
+        //add text in center
+        pieChart.setDrawCenterText(true);
+        pieChart.centerText = "Total Amount"
+
+
+
+        pieChart.invalidate()
+
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

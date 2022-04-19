@@ -130,7 +130,7 @@ class DashboardFragment : Fragment() {
         val transid= null
 
         val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
-        if (!amoun.isEmpty() && !dategiven.isEmpty()) {
+        if (!amoun.isEmpty() && !dategiven.isEmpty() && type!=null) {
             val status = databaseHandler.addTransactions(finModelClass(0, Integer.parseInt(amoun), typ,dategiven,addnote,mode,transid))
             if (status > -1) {
                 Toast.makeText(getActivity()?.getApplicationContext(), "Record saved", Toast.LENGTH_LONG).show()
@@ -149,7 +149,7 @@ class DashboardFragment : Fragment() {
         } else {
             Toast.makeText(
                 getActivity()?.getApplicationContext(),
-                "Name or Email cannot be blank",
+                "Fields cannot be blank",
                 Toast.LENGTH_LONG
             ).show()
         }
