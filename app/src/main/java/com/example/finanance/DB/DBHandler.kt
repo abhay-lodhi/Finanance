@@ -201,7 +201,7 @@ val db= this.readableDatabase
 
                 when (cat) {
                     "FOOD" -> img= R.drawable.iconfood
-                    "BILLS" ->  img= R.drawable.ic_outline_currency_rupee_24
+                    "BILLS" ->  img= R.drawable.ic_outline_attach_money_24
                     "SHOPPING" -> img= R.drawable.shoping
                     "Daily Needs"-> img= R.drawable.icone
                     "OTHERS"-> img= R.drawable.icongift

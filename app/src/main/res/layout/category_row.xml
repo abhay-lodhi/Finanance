@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/square_bottom"
     xmlns:tools="http://schemas.android.com/tools">
 
 
@@ -10,7 +11,8 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:cardCornerRadius="5dp">
+        app:cardCornerRadius="5dp"
+        >
         <ImageView
             android:id="@+id/icon_category"
             android:layout_width="wrap_content"
@@ -26,10 +28,13 @@
             android:id="@+id/amount"
             android:layout_width="180dp"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:textSize="18dp"
             android:text="TextView"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="60dp"
+            android:paddingLeft="35dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_outline_currency_rupee_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/icon_category"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,11 +43,11 @@
             android:id="@+id/dte"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="TextView"
-            android:layout_marginLeft="230dp"
+            android:layout_marginLeft="240dp"
+            android:layout_marginRight="10dp"
             android:gravity="center"
             android:paddingRight="40dp"
-            android:layout_marginRight="20dp"
+            android:text="TextView"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -110,10 +110,10 @@
 
     <Button
         android:id="@+id/Save"
-        android:layout_width="332dp"
+        android:layout_width="350dp"
         android:layout_height="57dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="120dp"
         android:background="@drawable/roundbutton"
         android:minHeight="60dp"

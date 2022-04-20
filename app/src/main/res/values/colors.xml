@@ -8,9 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#F5F5F5</color>
-    <color name="grey2">#DAD6D6</color>
-    <color name="red">#BF1B1B</color>
+    <color name="grey2">#E7E3E3</color>
+    <color name="red">#039BE5</color>
     <color name="black2">#2E2C2C</color>
+    <color name="food">#F44336</color>
+    <color name="dailyneeds">#FF9800</color>
+    <color name="shopping">#0E5B9E</color>
+    <color name="other">#4CBF51</color>
+    <color name="text">#595656</color>
 
 
     <color name="lightgrey">#303030</color>

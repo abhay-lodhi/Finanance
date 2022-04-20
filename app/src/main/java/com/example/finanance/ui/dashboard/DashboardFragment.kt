@@ -43,7 +43,7 @@ class DashboardFragment : Fragment() {
                     "FOOD" -> {
                         textinput?.setStartIconDrawable(R.drawable.iconfood)
                     }
-                    "BILLS" ->  textinput?.setStartIconDrawable(R.drawable.ic_outline_currency_rupee_24)
+                    "BILLS" ->  textinput?.setStartIconDrawable(R.drawable.ic_outline_attach_money_24)
                     "SHOPPING"  -> textinput?.setStartIconDrawable(R.drawable.shoping)
                     "Daily Needs"  -> textinput?.setStartIconDrawable(R.drawable.icone)
                     "OTHERS"  -> textinput?.setStartIconDrawable(R.drawable.icongift)

@@ -56,7 +56,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val sdf = SimpleDateFormat("EEE, MMMM dd, yyyy")
         val current = sdf.format(Date())
-val tV= getView()?.findViewById<TextView>(R.id.tv)
+        val tV= getView()?.findViewById<TextView>(R.id.tv)
         tV?.text = "$current"
 
 
@@ -153,11 +153,11 @@ val tV= getView()?.findViewById<TextView>(R.id.tv)
         dataEntries.add(PieEntry(other, "Other"))
 
         val colors: ArrayList<Int> = ArrayList()
-        colors.add(Color.parseColor("#4DD0E1"))
-        colors.add(Color.parseColor("#FFF176"))
-        colors.add(Color.parseColor("#FF8A65"))
-        colors.add(Color.parseColor("#FF8A65"))
-        colors.add(Color.parseColor("#FF8A65"))
+        colors.add(Color.parseColor("#db3236"))
+        colors.add(Color.parseColor("#f4c20d"))
+        colors.add(Color.parseColor("#4885ed"))
+        colors.add(Color.parseColor("#FF9800"))
+        colors.add(Color.parseColor("#3cba54"))
 
         val dataSet = PieDataSet(dataEntries, "")
         val data = PieData(dataSet)
@@ -172,10 +172,12 @@ val tV= getView()?.findViewById<TextView>(R.id.tv)
         pieChart.animateY(1400, Easing.EaseInOutQuad)
 
         //create hole in center
-        pieChart.holeRadius = 75f
+        pieChart.holeRadius = 58f
         pieChart.transparentCircleRadius = 0f
         pieChart.isDrawHoleEnabled = true
         pieChart.setHoleColor(Color.WHITE)
+
+
 
 
         //add text in center

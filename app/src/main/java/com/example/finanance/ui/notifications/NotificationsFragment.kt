@@ -488,11 +488,11 @@ class NotificationsFragment : Fragment() {
         dataEntries.add(PieEntry(other, "Other"))
 
         val colors: ArrayList<Int> = ArrayList()
-        colors.add(Color.parseColor("#4DD0E1"))
-        colors.add(Color.parseColor("#FFF176"))
-        colors.add(Color.parseColor("#FF8A65"))
-        colors.add(Color.parseColor("#FF8A65"))
-        colors.add(Color.parseColor("#FF8A65"))
+        colors.add(Color.parseColor("#db3236"))
+        colors.add(Color.parseColor("#f4c20d"))
+        colors.add(Color.parseColor("#4885ed"))
+        colors.add(Color.parseColor("#FF9800"))
+        colors.add(Color.parseColor("#3cba54"))
 
         val dataSet = PieDataSet(dataEntries, "")
         val data = PieData(dataSet)
