@@ -15,7 +15,7 @@
         <item>@drawable/ic_outline_currency_rupee_24</item>
         <item>@drawable/ic_baseline_chevron_right_24</item>
         <item>@drawable/ic_outline_chevron_left_24</item>
-        <item>@drawable/ic_outline_fastfood_24</item>
+        <item>@drawable/iconfood</item>
         <item>@drawable/ic_dashboard_black_24dp</item>
         //addition
         <item>@drawable/shoping</item>

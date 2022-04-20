@@ -3,15 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.192" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/button_add.xml" value="0.1895" />
+        <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.192" />
+        <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/ic_baseline_spa_24.xml" value="0.192" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.22" />
+        <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.192" />
+        <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/ic_launcher_background.xml" value="0.192" />
+        <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.192" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/ic_outline_attach_money_24.xml" value="0.1" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/ic_outline_calendar_month_24.xml" value="0.1895" />
+        <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/ic_outline_chevron_left_24.xml" value="0.192" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/ic_outline_currency_rupee_24.xml" value="0.1" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/ic_outline_fastfood_24.xml" value="0.2445" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/ic_outline_info_24.xml" value="0.2125" />
+        <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/drawable/square_bottom.xml" value="0.15" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/font/rubik.xml" value="0.284375" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/layout/category_row.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/layout/fragment_dashboard.xml" value="0.2" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/layout/fragment_home.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/layout/fragment_notifications.xml" value="0.25416666666666665" />

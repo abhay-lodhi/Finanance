@@ -73,7 +73,7 @@
         android:layout_marginRight="15dp"
         android:ems="10"
         android:paddingLeft="10dp"
-        android:hint="YYYY-MM-DD"
+        android:hint="DD/MM/YYYY"
         android:textSize="18dp"
         android:paddingBottom="15dp"
         android:paddingTop="5dp"

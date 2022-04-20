@@ -21,7 +21,8 @@
         android:textSize="18sp"
         app:drawableStartCompat ="@drawable/iconfood"
         app:layout_constraintBottom_toTopOf="@+id/billstext"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/square_bottom"/>
 
     <TextView
         android:id="@+id/billstext"
@@ -36,7 +37,8 @@
         android:text="Bills"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/shoppingtext"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/square_bottom"/>
 
     <TextView
         android:id="@+id/shoppingtext"
@@ -51,7 +53,8 @@
         android:textSize="18sp"
         app:drawableStartCompat="@drawable/shoping"
         app:layout_constraintBottom_toTopOf="@+id/dailytext"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/square_bottom"/>
 
 
     <TextView
@@ -67,7 +70,8 @@
         android:textSize="18sp"
         app:drawableStartCompat="@drawable/icone"
         app:layout_constraintBottom_toTopOf="@+id/otherstext"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/square_bottom"/>
 
     <TextView
         android:id="@+id/otherstext"
@@ -83,7 +87,8 @@
         android:layout_marginBottom="60dp"
         app:drawableStartCompat ="@drawable/icongift"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/square_bottom"/>
 
     <TextView
         android:id="@+id/textView6"
@@ -126,11 +131,14 @@
             android:layout_width="288dp"
             android:layout_height="match_parent"
             android:layout_weight="18"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
 
             android:backgroundTint="@color/white"
             android:imeOptions="actionSearch"
-            android:inputType="text" />
+            android:inputType="text"
+            android:drawableEnd="@drawable/search"
+            />
 
 
         <androidx.constraintlayout.utils.widget.ImageFilterButton
@@ -201,7 +209,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="60dp"
         app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
-        app:layout_constraintStart_toEndOf="@+id/otherstext" />
+        app:layout_constraintStart_toEndOf="@+id/otherstext"
+        android:background="@drawable/square_bottom"/>
 
     <TextView
         android:id="@+id/dailytxtamt"
@@ -215,7 +224,8 @@
         app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
         app:layout_constraintBottom_toTopOf="@+id/otherstxtamt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/dailytext" />
+        app:layout_constraintStart_toEndOf="@+id/dailytext"
+        android:background="@drawable/square_bottom"/>
 
     <TextView
         android:id="@+id/shoppingtxtamt"
@@ -229,7 +239,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center_vertical"
         app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
-        app:layout_constraintStart_toEndOf="@+id/shoppingtext" />
+        app:layout_constraintStart_toEndOf="@+id/shoppingtext"
+        android:background="@drawable/square_bottom"/>
 
     <TextView
         android:id="@+id/billstxtamt"
@@ -243,7 +254,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center_vertical"
         app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
-        app:layout_constraintStart_toEndOf="@+id/billstext" />
+        app:layout_constraintStart_toEndOf="@+id/billstext"
+        android:background="@drawable/square_bottom"/>
 
     <TextView
         android:id="@+id/foodtxtamt"
@@ -257,6 +269,7 @@
         app:drawableStartCompat ="@drawable/ic_outline_currency_rupee_24"
         app:layout_constraintBottom_toTopOf="@+id/billstxtamt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/foodtext" />
+        app:layout_constraintStart_toEndOf="@+id/foodtext"
+        android:background="@drawable/square_bottom"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
