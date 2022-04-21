@@ -20,10 +20,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finanance.DB.DBHandler
 import com.example.finanance.R
 import com.example.finanance.adapter.category_recycler
-import com.example.finanance.adapter.home_recycler
 import com.example.finanance.databinding.FragmentNotificationsBinding
 import com.example.finanance.model.categoryModelClass
-import com.example.finanance.model.homeRecyclerModelClass
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
@@ -53,6 +51,8 @@ class NotificationsFragment : Fragment() {
     val currdate = df.format(cur)
     val monthstodigit= mapOf("Jan" to "01","Feb" to "02","Mar" to "03","Apr" to "04","May" to "05","Jun" to "06","Jul" to "07","Aug" to "08","Sep" to "09","Oct" to "10","Nov" to "11","Dec" to "12")
     val digittomonths = mapOf(1 to "Jan", 2 to "Feb", 3 to "Mar", 4 to "Apr", 5 to "May", 6 to "Jun", 7 to "Jul", 8 to "Aug", 9 to "Sep", 10 to "Oct", 11 to "Nov", 12 to "Dec")
+    val digittomonths2 = mapOf(1 to "01", 2 to "02", 3 to "03", 4 to "04", 5 to "05", 6 to "06", 7 to "07", 8 to "08", 9 to "09", 10 to "10", 11 to "11", 12 to "12")
+
     var yearglob = Integer.parseInt(currdate[6].toString()+ currdate[7].toString()+currdate[8].toString()+currdate[9].toString())
     var monthglob =Integer.parseInt(currdate[3].toString()+ currdate[4].toString())
 
@@ -220,7 +220,7 @@ class NotificationsFragment : Fragment() {
     private fun getItemsList(type: String, img: Int): ArrayList<categoryModelClass> {
         //creating the instance of DatabaseHandler class
         val databaseHandler: DBHandler = DBHandler(requireContext())
-        val catList: ArrayList<categoryModelClass> = databaseHandler.getMonthdetails("%"+monthglob.toString()+"/"+yearglob.toString(), type , img )
+        val catList: ArrayList<categoryModelClass> = databaseHandler.getMonthdetails(yearglob.toString()+"-"+digittomonths2[monthglob]+"-%", type , img )
 
         return catList
     }

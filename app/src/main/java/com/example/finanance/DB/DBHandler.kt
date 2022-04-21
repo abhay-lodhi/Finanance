@@ -72,9 +72,13 @@ class DBHandler(context: Context) :
 
         val db = this.writableDatabase
         val contentValues = ContentValues()
+        val format1 = SimpleDateFormat("dd/MM/yyyy")
+        val format2 = SimpleDateFormat("yyyy-MM-dd")
+        val date: Date = format1.parse(tran.Date)
+
         contentValues.put(KEY_AMOUNT, tran.Amount)
         contentValues.put(KEY_TYPE , tran.Type)
-        contentValues.put(KEY_DAT , tran.Date)
+        contentValues.put(KEY_DAT ,  format2.format(date).toString())
         contentValues.put(KEY_NOTE , tran.Note)
         contentValues.put(KEY_MODE , tran.Mode)
         contentValues.put(KEY_TRANSACTIONID , tran.Transaction_id)
@@ -154,6 +158,11 @@ val db= this.readableDatabase
                 id =cursor.getInt(cursor.getColumnIndex(KEY_ID))
                 amount = cursor.getInt(cursor.getColumnIndex(KEY_AMOUNT))
                 dat = cursor.getString(cursor.getColumnIndex(KEY_DAT))
+                val format1 = SimpleDateFormat("dd/MM/yyyy")
+                val format2 = SimpleDateFormat("yyyy-MM-dd")
+                val date: Date = format2.parse(dat)
+
+                dat = format1.format(date)
 
                 val cat = categoryModelClass(id = id, image=img , Amount = amount,date= dat )
                 catList.add(cat)
@@ -194,7 +203,8 @@ val db= this.readableDatabase
                 cat=cursor.getString(cursor.getColumnIndex(KEY_TYPE))
                 amount = cursor.getInt(cursor.getColumnIndex(KEY_AMOUNT))
                 dat = cursor.getString(cursor.getColumnIndex(KEY_DAT))
-                val format1 = SimpleDateFormat("dd/MM/yyyy")
+
+                val format1 = SimpleDateFormat("yyyy-MM-dd")
                 val format2 = SimpleDateFormat("dd-MMM-yyyy")
                 val date: Date = format1.parse(dat)
                 dat= format2.format(date)
