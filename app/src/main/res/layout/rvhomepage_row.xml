@@ -2,42 +2,61 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:paddingTop="5dp"
     android:paddingBottom="-2dp"
     android:paddingRight="-2dp"
     android:paddingLeft="4dp"
-
     android:layout_height="wrap_content">
 
+    <TextView
+        android:id="@+id/monthyear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey2"
+        android:gravity="bottom"
+        android:paddingBottom="5dp"
+
+        android:text="Month"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:orientation="horizontal"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:background="@drawable/square_bottom"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/square_bottom">
+        >
 
         <ImageView
             android:id="@+id/IVrvhomepage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/ic_baseline_chevron_right_24" />
 
         <TextView
             android:id="@+id/catrvhomepage"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-android:textColor="@color/text"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:text="TextView"
+            android:textColor="@color/text"
 
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -50,8 +69,8 @@ android:textColor="@color/text"
             android:layout_width="82dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-android:textColor="@color/text"
             android:text="cata"
+            android:textColor="@color/text"
 
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -62,12 +81,12 @@ android:textColor="@color/text"
         <TextView
             android:id="@+id/datrvhomepage"
             android:layout_width="130dp"
-            android:textColor="@color/text"
-            android:textSize="18dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:text="29 April,2022"
+            android:textColor="@color/text"
 
-            android:text="29 April,2022" />
+            android:textSize="18dp" />
 
 
     </LinearLayout>

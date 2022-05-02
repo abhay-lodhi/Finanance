@@ -196,8 +196,14 @@ val db= this.readableDatabase
         var dat: String
         var cat: String
         var img: Int= R.drawable.ic_outline_currency_rupee_24
+        val sdf = SimpleDateFormat("dd-MMM-yyyy")
+        val current = sdf.format(Date())
+        var month = current.drop(3).dropLast(5)
+
 
         if (cursor.moveToFirst()) {
+            val row = homeRecyclerModelClass(id = -1, cat= "This month", image=R.drawable.ic_baseline_edit_24 , Amount = -1,date= "-1")
+            catList.add(row)
             do {
                 id =cursor.getInt(cursor.getColumnIndex(KEY_ID))
                 cat=cursor.getString(cursor.getColumnIndex(KEY_TYPE))
@@ -208,6 +214,12 @@ val db= this.readableDatabase
                 val format2 = SimpleDateFormat("dd-MMM-yyyy")
                 val date: Date = format1.parse(dat)
                 dat= format2.format(date)
+
+                if(month!= dat.drop(3).dropLast(5)){
+                    month= dat.drop(3).dropLast(5)
+                    val row = homeRecyclerModelClass(id = -1, cat= month+ ", "+dat.drop(7), image=R.drawable.ic_baseline_edit_24 , Amount = -1,date= "-1")
+                    catList.add(row)
+                }
 
                 when (cat) {
                     "FOOD" -> img= R.drawable.iconfood

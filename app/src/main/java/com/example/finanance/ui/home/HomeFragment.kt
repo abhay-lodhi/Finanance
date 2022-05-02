@@ -89,10 +89,10 @@ class HomeFragment : Fragment() {
 //        recyclerview?.adapter= catAdapter
 
         val sdf1 = SimpleDateFormat("dd/MM/yyyy")
-        val current1 = sdf.format(Date())
+        val current1 = sdf1.format(Date())
 
         val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
-        val stats = databaseHandler.getMonthData("01/04/2022")
+        val stats = databaseHandler.getMonthData(current1)
         pieChart = requireView()!!.findViewById<PieChart>(R.id.pieChart)
 
 
@@ -126,7 +126,7 @@ class HomeFragment : Fragment() {
         setDataToPieChart()
     }
     private fun initPieChart() {
-        pieChart.setUsePercentValues(true)
+        pieChart.setUsePercentValues(false)
         pieChart.description.text = ""
         //hollow pie chart
         pieChart.isDrawHoleEnabled = false

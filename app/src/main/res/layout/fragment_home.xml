@@ -36,7 +36,7 @@
     <TextView
         android:id="@+id/tv"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="hell"
         android:textColor="@color/black2"
         android:textSize="24sp"
@@ -50,10 +50,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvhome"
         android:layout_width="match_parent"
-        android:layout_height="364dp"
+        android:layout_height="350dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="55dp"
        />
 
     <TextView
@@ -68,7 +69,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
+        tools:visibility="visible"
+    />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
@@ -76,13 +78,14 @@
         android:layout_height="0dp"
 
         android:layout_marginTop="110dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="25dp"
 
         app:layout_constraintBottom_toTopOf="@+id/rvhome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
