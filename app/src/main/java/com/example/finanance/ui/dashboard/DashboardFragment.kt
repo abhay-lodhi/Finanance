@@ -71,6 +71,7 @@ class DashboardFragment : Fragment() {
         val datepick = getView()?.findViewById<EditText>(R.id.date)
         val save= getView()?.findViewById<Button>(R.id.Save)
         val datetext= getView()?.findViewById<EditText>(R.id.date)
+        val delete= getView()?.findViewById<ImageView>(R.id.delete)
 
         val today = MaterialDatePicker.todayInUtcMilliseconds()
         val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
@@ -112,7 +113,12 @@ class DashboardFragment : Fragment() {
 
 
         }
+delete?.setOnClickListener{ view ->
+    val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
+    databaseHandler.cleardata()
+    Toast.makeText(getActivity()?.getApplicationContext(), "Records deleted", Toast.LENGTH_LONG).show()
 
+}
         save?.setOnClickListener{ view ->
             addRecord()
         }

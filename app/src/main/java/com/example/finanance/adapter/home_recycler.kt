@@ -37,7 +37,7 @@ class home_recycler (private val mList: ArrayList<homeRecyclerModelClass>) : Rec
             holder.linear.visibility=View.VISIBLE
             holder.icon.setImageResource(ItemsViewModel.image)
             holder.category.text=ItemsViewModel.cat.toString()
-            holder.amount.text = ItemsViewModel.Amount.toString()
+            holder.amount.text = "\u20B9 "+"%,d".format(ItemsViewModel.Amount)
             holder.dte.text= ItemsViewModel.date
        }
         else{

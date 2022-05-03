@@ -32,9 +32,7 @@
             android:textSize="18dp"
             android:text="TextView"
             android:layout_marginLeft="60dp"
-            android:paddingLeft="35dp"
-            android:drawablePadding="10dp"
-            android:drawableStart="@drawable/ic_outline_currency_rupee_24"
+            android:paddingLeft="45dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/icon_category"
             app:layout_constraintTop_toTopOf="parent" />

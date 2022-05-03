@@ -17,7 +17,6 @@
         android:background="@color/grey2"
         android:gravity="bottom"
         android:paddingBottom="5dp"
-
         android:text="Month"
         android:textSize="20sp"
         android:textColor="@color/black"

@@ -4,7 +4,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finanance.R
 import com.example.finanance.model.categoryModelClass
@@ -26,7 +25,7 @@ class category_recycler (private val mList: ArrayList<categoryModelClass>) : Rec
 
         val ItemsViewModel = mList.get(position)
         holder.icon_category.setImageResource(ItemsViewModel.image)
-        holder.amount.text = ItemsViewModel.Amount.toString()
+        holder.amount.text = "\u20B9 "+"%,d".format(ItemsViewModel.Amount)
         holder.dte.text= ItemsViewModel.date
 
 

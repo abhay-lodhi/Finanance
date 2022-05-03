@@ -169,7 +169,7 @@ val db= this.readableDatabase
             } while (cursor.moveToNext())
         }
         return catList
-
+db.close()
     }
 
     @SuppressLint("Range")
@@ -238,9 +238,15 @@ val db= this.readableDatabase
             } while (cursor.moveToNext())
         }
         return catList
-
+db.close()
     }
 
+    fun cleardata(){
+        val db = this.writableDatabase
+        db.execSQL("DELETE FROM $TABLE_TRANSACTIONS")
+        db.execSQL("DELETE FROM $TABLE_Statics")
+        db.close()
+    }
 
 //    fun getRow(tran: finModelClass): finModelClass{
 //      val db= this.readableDatabase

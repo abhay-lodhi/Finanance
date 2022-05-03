@@ -22,6 +22,7 @@ import com.example.finanance.R
 import com.example.finanance.adapter.category_recycler
 import com.example.finanance.databinding.FragmentNotificationsBinding
 import com.example.finanance.model.categoryModelClass
+import com.example.finanance.model.typeModelClass
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
@@ -97,45 +98,7 @@ class NotificationsFragment : Fragment() {
         val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
         val stats = databaseHandler.getMonthData(datelocal)
 
-        if(stats.FOOD==null){
-           binding.foodtxtamt.setText("0")
-            food=0f
-        }else{
-            binding.foodtxtamt.setText(stats.FOOD.toString())
-        food=stats.FOOD!!.toFloat()
-        }
-
-        if(stats.BILLS==null){
-            binding.billstxtamt.setText("0")
-            bills=0f
-        }else{
-            binding.billstxtamt.setText(stats.BILLS.toString())
-            bills=stats.BILLS!!.toFloat()
-        }
-
-        if(stats.SHOPPING==null){
-            binding.shoppingtxtamt.setText("0")
-            shopp=0f
-        }else{
-            binding.shoppingtxtamt.setText(stats.SHOPPING.toString())
-        shopp=stats.SHOPPING!!.toFloat()
-        }
-
-        if(stats.Daily==null){
-            binding.dailytxtamt.setText("0")
-            daily=0f
-        }else{
-            binding.dailytxtamt.setText(stats.Daily.toString())
-        daily=stats.Daily!!.toFloat()
-        }
-
-        if(stats.OTHERS==null){
-            binding.otherstxtamt.setText("0")
-            other= 0f
-        }else{
-            binding.otherstxtamt.setText(stats.OTHERS.toString())
-        other=stats.OTHERS!!.toFloat()
-        }
+        setValues(stats)
         initPieChart()
 
         setDataToPieChart()
@@ -250,45 +213,7 @@ class NotificationsFragment : Fragment() {
             yearglob=Integer.parseInt(year)
             monthglob= Integer.parseInt(month)
 
-            if(stats.FOOD==null){
-                binding.foodtxtamt.setText("0")
-                food=0f
-            }else{
-                binding.foodtxtamt.setText(stats.FOOD.toString())
-                food=stats.FOOD!!.toFloat()
-            }
-
-            if(stats.BILLS==null){
-                binding.billstxtamt.setText("0")
-                bills=0f
-            }else{
-                binding.billstxtamt.setText(stats.BILLS.toString())
-                bills=stats.BILLS!!.toFloat()
-            }
-
-            if(stats.SHOPPING==null){
-                binding.shoppingtxtamt.setText("0")
-                shopp=0f
-            }else{
-                binding.shoppingtxtamt.setText(stats.SHOPPING.toString())
-                shopp=stats.SHOPPING!!.toFloat()
-            }
-
-            if(stats.Daily==null){
-                binding.dailytxtamt.setText("0")
-                daily=0f
-            }else{
-                binding.dailytxtamt.setText(stats.Daily.toString())
-                daily=stats.Daily!!.toFloat()
-            }
-
-            if(stats.OTHERS==null){
-                binding.otherstxtamt.setText("0")
-                other= 0f
-            }else{
-                binding.otherstxtamt.setText(stats.OTHERS.toString())
-                other=stats.OTHERS!!.toFloat()
-            }
+            setValues(stats)
             initPieChart()
 
             setDataToPieChart()
@@ -331,45 +256,7 @@ class NotificationsFragment : Fragment() {
             }
         }else {
             binding.search.setText(digittomonths[monthglob]+" ,"+yearglob)
-            if(stats.FOOD==null){
-                binding.foodtxtamt.setText("0")
-                food=0f
-            }else{
-                binding.foodtxtamt.setText(stats.FOOD.toString())
-                food=stats.FOOD!!.toFloat()
-            }
-
-            if(stats.BILLS==null){
-                binding.billstxtamt.setText("0")
-                bills=0f
-            }else{
-                binding.billstxtamt.setText(stats.BILLS.toString())
-                bills=stats.BILLS!!.toFloat()
-            }
-
-            if(stats.SHOPPING==null){
-                binding.shoppingtxtamt.setText("0")
-                shopp=0f
-            }else{
-                binding.shoppingtxtamt.setText(stats.SHOPPING.toString())
-                shopp=stats.SHOPPING!!.toFloat()
-            }
-
-            if(stats.Daily==null){
-                binding.dailytxtamt.setText("0")
-                daily=0f
-            }else{
-                binding.dailytxtamt.setText(stats.Daily.toString())
-                daily=stats.Daily!!.toFloat()
-            }
-
-            if(stats.OTHERS==null){
-                binding.otherstxtamt.setText("0")
-                other= 0f
-            }else{
-                binding.otherstxtamt.setText(stats.OTHERS.toString())
-                other=stats.OTHERS!!.toFloat()
-            }
+            setValues(stats)
             initPieChart()
 
             setDataToPieChart()
@@ -413,45 +300,7 @@ class NotificationsFragment : Fragment() {
 
         }else {
             binding.search.setText(digittomonths[monthglob]+" ,"+yearglob)
-            if(stats.FOOD==null){
-                binding.foodtxtamt.setText("0")
-                food=0f
-            }else{
-                binding.foodtxtamt.setText(stats.FOOD.toString())
-                food=stats.FOOD!!.toFloat()
-            }
-
-            if(stats.BILLS==null){
-                binding.billstxtamt.setText("0")
-                bills=0f
-            }else{
-                binding.billstxtamt.setText(stats.BILLS.toString())
-                bills=stats.BILLS!!.toFloat()
-            }
-
-            if(stats.SHOPPING==null){
-                binding.shoppingtxtamt.setText("0")
-                shopp=0f
-            }else{
-                binding.shoppingtxtamt.setText(stats.SHOPPING.toString())
-                shopp=stats.SHOPPING!!.toFloat()
-            }
-
-            if(stats.Daily==null){
-                binding.dailytxtamt.setText("0")
-                daily=0f
-            }else{
-                binding.dailytxtamt.setText(stats.Daily.toString())
-                daily=stats.Daily!!.toFloat()
-            }
-
-            if(stats.OTHERS==null){
-                binding.otherstxtamt.setText("0")
-                other= 0f
-            }else{
-                binding.otherstxtamt.setText(stats.OTHERS.toString())
-                other=stats.OTHERS!!.toFloat()
-            }
+           setValues(stats)
             initPieChart()
 
             setDataToPieChart()
@@ -465,7 +314,7 @@ class NotificationsFragment : Fragment() {
         pieChart.description.text = ""
         //hollow pie chart
         pieChart.isDrawHoleEnabled = false
-        pieChart.setTouchEnabled(false)
+        pieChart.setTouchEnabled(true)
         pieChart.setDrawEntryLabels(false)
         //adding padding
         pieChart.setExtraOffsets(20f, 0f, 20f, 20f)
@@ -515,12 +364,53 @@ class NotificationsFragment : Fragment() {
 
         //add text in center
         pieChart.setDrawCenterText(true);
-        pieChart.centerText = "Total Amount= "+(food+bills+shopp+daily+other).toInt().toString()
+        pieChart.centerText = "Total Amount=  "+"\u20B9 "+"%,d".format((food+bills+shopp+daily+other).toInt())
 
 
 
         pieChart.invalidate()
 
+    }
+    fun setValues(stats:typeModelClass){
+        if(stats.FOOD==null){
+            binding.foodtxtamt.setText("\u20B9 "+"%,d".format(0))
+            food=0f
+        }else{
+            binding.foodtxtamt.setText("\u20B9 "+"%,d".format(stats.FOOD))
+            food=stats.FOOD!!.toFloat()
+        }
+
+        if(stats.BILLS==null){
+            binding.billstxtamt.setText("\u20B9 "+"%,d".format(0))
+            bills=0f
+        }else{
+            binding.billstxtamt.setText("\u20B9 "+"%,d".format(stats.BILLS))
+            bills=stats.BILLS!!.toFloat()
+        }
+
+        if(stats.SHOPPING==null){
+            binding.shoppingtxtamt.setText("\u20B9 "+"%,d".format(0))
+            shopp=0f
+        }else{
+            binding.shoppingtxtamt.setText("\u20B9 "+"%,d".format(stats.SHOPPING))
+            shopp=stats.SHOPPING!!.toFloat()
+        }
+
+        if(stats.Daily==null){
+            binding.dailytxtamt.setText("\u20B9 "+"%,d".format(0))
+            daily=0f
+        }else{
+            binding.dailytxtamt.setText("\u20B9 "+"%,d".format(stats.Daily))
+            daily=stats.Daily!!.toFloat()
+        }
+
+        if(stats.OTHERS==null){
+            binding.otherstxtamt.setText("\u20B9 "+"%,d".format(0))
+            other= 0f
+        }else{
+            binding.otherstxtamt.setText("\u20B9 "+"%,d".format(stats.OTHERS))
+            other=stats.OTHERS!!.toFloat()
+        }
     }
 
     override fun onDestroyView() {

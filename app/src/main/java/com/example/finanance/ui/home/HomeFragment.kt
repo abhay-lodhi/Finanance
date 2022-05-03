@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -133,6 +134,7 @@ class HomeFragment : Fragment() {
         pieChart.setTouchEnabled(false)
         pieChart.setDrawEntryLabels(false)
         //adding padding
+       // pieChart.da
         pieChart.setExtraOffsets(20f, 0f, 20f, 20f)
         pieChart.setUsePercentValues(true)
         pieChart.isRotationEnabled = false
@@ -146,23 +148,23 @@ class HomeFragment : Fragment() {
     private fun setDataToPieChart() {
         pieChart.setUsePercentValues(false)
         val dataEntries = ArrayList<PieEntry>()
-        dataEntries.add(PieEntry(food, "Food"))
-        dataEntries.add(PieEntry(bills, "Bills"))
-        dataEntries.add(PieEntry(shopp, "Shopping"))
-        dataEntries.add(PieEntry(daily, "Daily Needs"))
-        dataEntries.add(PieEntry(other, "Other"))
+
+        dataEntries.add(PieEntry(1000f, "Remaning"))
+        dataEntries.add(PieEntry(food+bills+shopp+daily+other, "Spent"))
+
 
         val colors: ArrayList<Int> = ArrayList()
-        colors.add(Color.parseColor("#db3236"))
-        colors.add(Color.parseColor("#f4c20d"))
-        colors.add(Color.parseColor("#4885ed"))
-        colors.add(Color.parseColor("#FF9800"))
-        colors.add(Color.parseColor("#3cba54"))
+        colors.add(Color.parseColor("#F5F5F5"))
+        colors.add(Color.parseColor("#2E2C2C"))
+
+
 
         val dataSet = PieDataSet(dataEntries, "")
         val data = PieData(dataSet)
 
         // In Percentage
+        dataSet.setDrawValues(false)
+
         data.setValueFormatter(PercentFormatter())
         dataSet.sliceSpace = 3f
         dataSet.colors = colors
@@ -172,7 +174,7 @@ class HomeFragment : Fragment() {
         pieChart.animateY(1400, Easing.EaseInOutQuad)
 
         //create hole in center
-        pieChart.holeRadius = 58f
+        pieChart.holeRadius = 85f
         pieChart.transparentCircleRadius = 0f
         pieChart.isDrawHoleEnabled = true
         pieChart.setHoleColor(Color.WHITE)
@@ -182,7 +184,11 @@ class HomeFragment : Fragment() {
 
         //add text in center
         pieChart.setDrawCenterText(true);
-        pieChart.centerText = "This Month= "+(food+bills+shopp+daily+other).toInt().toString()
+        pieChart.setCenterTextSize(25f)
+        pieChart.centerText = "\u20B9 "+"%,d".format((food+bills+shopp+daily+other).toInt()).toString()
+//        pieChart.setCenterTextSize(20f)
+//        pieChart.centerText = (food+bills+shopp+daily+other).toInt().toString()
+
 
 
 
