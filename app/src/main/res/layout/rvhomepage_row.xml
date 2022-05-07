@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:paddingTop="5dp"
     android:paddingBottom="-2dp"
-    android:paddingRight="-2dp"
-    android:paddingLeft="4dp"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
     android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/monthyear"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:background="@color/grey2"
-        android:gravity="bottom"
-        android:paddingBottom="5dp"
+        android:gravity="center_vertical"
         android:text="Month"
         android:textSize="20sp"
         android:textColor="@color/black"
@@ -32,8 +30,8 @@
         android:layout_height="65dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:background="@drawable/square_bottom"
         android:orientation="horizontal"
+        android:background="@drawable/square_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,4 +89,4 @@
     </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

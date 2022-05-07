@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finanance.DB.DBHandler
@@ -44,8 +43,8 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+//        val homeViewModel =
+//            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -58,14 +57,15 @@ class HomeFragment : Fragment() {
         val sdf = SimpleDateFormat("EEE, MMMM dd, yyyy")
         val current = sdf.format(Date())
         val tV= getView()?.findViewById<TextView>(R.id.tv)
-        tV?.text = "$current"
+        tV?.text = current
 
-
+        pieChart = requireView().findViewById<PieChart>(R.id.pieChart)
         val recyclerview = getView()?.findViewById<RecyclerView>(R.id.rvhome)
-         val tvrecords = getView()?.findViewById<TextView>(R.id.tvNoRecordsAvailable)
+         val tvrecords = getView()?.findViewById<ImageView>(R.id.tvNoRecordsAvailable)
         if (getItemsList().size > 0) {
 
             recyclerview?.visibility = View.VISIBLE
+            pieChart.visibility=View.VISIBLE
              tvrecords?.visibility = View.GONE
           //  tvrecors?.text="heyyy"
             // Set the LayoutManager that this RecyclerView will use.
@@ -79,6 +79,7 @@ class HomeFragment : Fragment() {
         } else {
           //  tvrecors?.text="heyyy1"
             recyclerview?.visibility = View.GONE
+            pieChart.visibility=View.GONE
             tvrecords?.visibility = View.VISIBLE
         }
 
@@ -92,49 +93,48 @@ class HomeFragment : Fragment() {
         val sdf1 = SimpleDateFormat("dd/MM/yyyy")
         val current1 = sdf1.format(Date())
 
-        val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
+        val databaseHandler = DBHandler(requireActivity().baseContext)
         val stats = databaseHandler.getMonthData(current1)
-        pieChart = requireView()!!.findViewById<PieChart>(R.id.pieChart)
+
 
 
 
         if(stats.FOOD==null){
            food=0f
         }else
-          food = stats.FOOD!!.toFloat()
+          food = stats.FOOD.toFloat()
 
         if(stats.BILLS==null){
             bills=0f
         }else
-            bills=stats.BILLS!!.toFloat()
+            bills=stats.BILLS.toFloat()
 
         if(stats.SHOPPING==null){
           shopp=0f
         }else
-          shopp=stats.SHOPPING!!.toFloat()
+          shopp=stats.SHOPPING.toFloat()
 
         if(stats.Daily==null){
            daily=0f
         }else
-          daily=stats.Daily!!.toFloat()
+          daily=stats.Daily.toFloat()
 
         if(stats.OTHERS==null){
            other=0f
         }else
-            other=stats.OTHERS!!.toFloat()
+            other=stats.OTHERS.toFloat()
         initPieChart()
 
         setDataToPieChart()
     }
     private fun initPieChart() {
-        pieChart.setUsePercentValues(false)
+        pieChart.setUsePercentValues(true)
         pieChart.description.text = ""
         //hollow pie chart
         pieChart.isDrawHoleEnabled = false
         pieChart.setTouchEnabled(false)
         pieChart.setDrawEntryLabels(false)
         //adding padding
-       // pieChart.da
         pieChart.setExtraOffsets(20f, 0f, 20f, 20f)
         pieChart.setUsePercentValues(true)
         pieChart.isRotationEnabled = false
@@ -148,23 +148,23 @@ class HomeFragment : Fragment() {
     private fun setDataToPieChart() {
         pieChart.setUsePercentValues(false)
         val dataEntries = ArrayList<PieEntry>()
-
-        dataEntries.add(PieEntry(1000f, "Remaning"))
-        dataEntries.add(PieEntry(food+bills+shopp+daily+other, "Spent"))
-
+        dataEntries.add(PieEntry(food, "Food"))
+        dataEntries.add(PieEntry(bills, "Bills"))
+        dataEntries.add(PieEntry(shopp, "Shopping"))
+        dataEntries.add(PieEntry(daily, "Daily Needs"))
+        dataEntries.add(PieEntry(other, "Other"))
 
         val colors: ArrayList<Int> = ArrayList()
-        colors.add(Color.parseColor("#F5F5F5"))
-        colors.add(Color.parseColor("#2E2C2C"))
-
-
+        colors.add(Color.parseColor("#db3236"))
+        colors.add(Color.parseColor("#f4c20d"))
+        colors.add(Color.parseColor("#4885ed"))
+        colors.add(Color.parseColor("#FF9800"))
+        colors.add(Color.parseColor("#3cba54"))
 
         val dataSet = PieDataSet(dataEntries, "")
         val data = PieData(dataSet)
 
         // In Percentage
-        dataSet.setDrawValues(false)
-
         data.setValueFormatter(PercentFormatter())
         dataSet.sliceSpace = 3f
         dataSet.colors = colors
@@ -174,7 +174,7 @@ class HomeFragment : Fragment() {
         pieChart.animateY(1400, Easing.EaseInOutQuad)
 
         //create hole in center
-        pieChart.holeRadius = 85f
+        pieChart.holeRadius = 58f
         pieChart.transparentCircleRadius = 0f
         pieChart.isDrawHoleEnabled = true
         pieChart.setHoleColor(Color.WHITE)
@@ -183,9 +183,8 @@ class HomeFragment : Fragment() {
 
 
         //add text in center
-        pieChart.setDrawCenterText(true);
-        pieChart.setCenterTextSize(25f)
-        pieChart.centerText = "\u20B9 "+"%,d".format((food+bills+shopp+daily+other).toInt()).toString()
+        pieChart.setDrawCenterText(true)
+        pieChart.centerText = " This month = \u20B9 "+"%,d".format((food+bills+shopp+daily+other).toInt())
 //        pieChart.setCenterTextSize(20f)
 //        pieChart.centerText = (food+bills+shopp+daily+other).toInt().toString()
 
@@ -199,7 +198,7 @@ class HomeFragment : Fragment() {
 
     private fun getItemsList(): ArrayList<homeRecyclerModelClass> {
         //creating the instance of DatabaseHandler class
-        val databaseHandler: DBHandler = DBHandler(requireContext())
+        val databaseHandler = DBHandler(requireContext())
         //calling the viewEmployee method of DatabaseHandler class to read the records
         val empList: ArrayList<homeRecyclerModelClass> = databaseHandler.getdetails()
 

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="409dp"
@@ -36,12 +37,10 @@
     <TextView
         android:id="@+id/tv"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:text="hell"
         android:textColor="@color/black2"
         android:textSize="24sp"
-
-        app:layout_constraintBottom_toTopOf="@+id/pieChart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,20 +56,16 @@
         android:layout_marginBottom="55dp"
        />
 
-    <TextView
+    <ImageView
         android:id="@+id/tvNoRecordsAvailable"
-        android:layout_width="match_parent"
-        android:layout_height="630dp"
-        android:textAlignment="center"
-        android:paddingTop="90dp"
-        android:text="No records available!!!"
-        android:textSize="18sp"
-        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/no_data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible"
-    />
+        app:layout_constraintTop_toBottomOf="@+id/tv"
+        tools:visibility="visible" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"

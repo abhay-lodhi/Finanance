@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.example.finanance.DB.DBHandler
 import com.example.finanance.R
 import com.example.finanance.databinding.FragmentDashboardBinding
@@ -22,22 +21,26 @@ import java.util.*
 class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
+    val today = MaterialDatePicker.todayInUtcMilliseconds()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
+
     private val binding get() = _binding!!
 
     override fun onResume() {
         super.onResume()
         val category=resources.getStringArray(R.array.category)
+
         val arrayadapter=ArrayAdapter(requireContext(),R.layout.dropdown_category,category)
+
         binding.autoCompleteTextView.setAdapter(arrayadapter)
 
         val type =getView()?.findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
         val textinput =getView()?.findViewById<TextInputLayout>(R.id.textinputlayout)
         type?.onItemClickListener = object : AdapterView.OnItemClickListener{
             override fun onItemClick(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                val item= arrayadapter?.getItem(position)
+                val item= arrayadapter.getItem(position)
                 when (item) {
 
                     "FOOD" -> {
@@ -59,7 +62,7 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+       // val dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -68,83 +71,93 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val datepick = getView()?.findViewById<EditText>(R.id.date)
+
         val save= getView()?.findViewById<Button>(R.id.Save)
         val datetext= getView()?.findViewById<EditText>(R.id.date)
-        val delete= getView()?.findViewById<ImageView>(R.id.delete)
+      //  val delete= getView()?.findViewById<ImageView>(R.id.delete)
 
-        val today = MaterialDatePicker.todayInUtcMilliseconds()
+
+
         val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         calendar.timeInMillis = today
         calendar[Calendar.YEAR] = 2021
         val startDate = calendar.timeInMillis
 
         calendar.timeInMillis = today
-        calendar[Calendar.YEAR] = 2023
+        calendar[Calendar.YEAR] = 2022
         val endDate = calendar.timeInMillis
 
 
         val builder = MaterialDatePicker.Builder.datePicker()
+
         val constraints: CalendarConstraints.Builder = CalendarConstraints.Builder()
         constraints.setStart(startDate)
         constraints.setEnd(endDate)
+
+
+
         val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         builder.setCalendarConstraints(constraints.build())
 
-        val datePicker= builder.build()
+        val datePick=  builder.build()
 
-        datepick?.setOnFocusChangeListener { _, hasFocus ->
+        datetext?.setText(sdf.format(today).toString())
+
+
+        datetext?.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
-                datePicker.show(childFragmentManager, "tag");
-                datePicker.addOnPositiveButtonClickListener {
+                datePick.show(childFragmentManager, "tag")
+                datePick.addOnPositiveButtonClickListener {
                     val dat = sdf.format(it)
-                    datetext?.setText(dat.toString())
+                    datetext.setText(dat.toString())
                 }
             }}
-        datepick?.setOnClickListener{view ->
-            datePicker.show(childFragmentManager, "tag");
-            datePicker.addOnPositiveButtonClickListener {
+
+        datetext?.setOnClickListener{
+            datePick.show(childFragmentManager, "tag")
+            datePick.addOnPositiveButtonClickListener {
                 // Respond to positive button click.
                 //  date?.text=datePicker.getHeaderText()
                 val dat = sdf.format(it)
-                datetext?.setText(dat.toString())
+                datetext.setText(dat.toString())
 
             }
 
 
         }
-delete?.setOnClickListener{ view ->
-    val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
-    databaseHandler.cleardata()
-    Toast.makeText(getActivity()?.getApplicationContext(), "Records deleted", Toast.LENGTH_LONG).show()
-
-}
-        save?.setOnClickListener{ view ->
+//delete?.setOnClickListener{ view ->
+//    val databaseHandler = DBHandler(requireActivity().baseContext)
+//    databaseHandler.cleardata()
+//    Toast.makeText(getActivity()?.getApplicationContext(), "Records deleted", Toast.LENGTH_LONG).show()
+//
+//}
+        save?.setOnClickListener{
             addRecord()
         }
     }
 
     fun addRecord(){
-        val amount= getView()?.findViewById<EditText>(R.id.amount)
-        val date= getView()?.findViewById<EditText>(R.id.date)
-        val notes= getView()?.findViewById<EditText>(R.id.addNotes)
-        val type =getView()?.findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
-        val amoun=amount?.text.toString()
-        val addnote=notes?.text.toString()
-        val dategiven= date?.text.toString()
-        val typ= type?.text.toString()
+//        val amount= getView()?.findViewById<EditText>(R.id.amount)
+//        val date= getView()?.findViewById<EditText>(R.id.date)
+//        val notes= getView()?.findViewById<EditText>(R.id.addNotes)
+//        val type =getView()?.findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
+        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val amoun=binding.amount.text.toString()
+        val addnote=binding.addNotes.text.toString()
+        val dategiven= binding.date.text.toString()
+        val typ= binding.autoCompleteTextView.text.toString()
         val mode="CASH"
         val transid= null
 
-        val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
-        if (!amoun.isEmpty() && !dategiven.isEmpty() && type!=null) {
+        val databaseHandler = DBHandler(requireActivity().baseContext)
+        if (!amoun.isEmpty()) {
             val status = databaseHandler.addTransactions(finModelClass(0, Integer.parseInt(amoun), typ,dategiven,addnote,mode,transid))
             if (status > -1) {
                 Toast.makeText(getActivity()?.getApplicationContext(), "Record saved", Toast.LENGTH_LONG).show()
-                amount?.text?.clear()
-                notes?.text?.clear()
-                date?.text?.clear()
-                type?.text?.clear()
+                binding.amount.text.clear()
+                binding.addNotes.text.clear()
+               binding.date.setText(sdf.format(today).toString())
+               binding.autoCompleteTextView.setText("FOOD")
             }else{
                 Toast.makeText(
                     getActivity()?.getApplicationContext(),
@@ -156,7 +169,7 @@ delete?.setOnClickListener{ view ->
         } else {
             Toast.makeText(
                 getActivity()?.getApplicationContext(),
-                "Fields cannot be blank",
+                "Amount cannot be blank",
                 Toast.LENGTH_LONG
             ).show()
         }

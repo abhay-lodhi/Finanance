@@ -40,22 +40,22 @@ class NotificationsFragment : Fragment() {
     private lateinit var catAdapter: category_recycler
     private lateinit var dialog: Dialog
     private lateinit var pieChart: PieChart
-    var food =0f
-    var bills=0f
-    var shopp=0f
-    var daily=0f
-    var other =0f
+    private var food =0f
+    private  var bills=0f
+    private var shopp=0f
+    private var daily=0f
+    private var other =0f
 
 
-    val cur = Calendar.getInstance().time
-    val df = SimpleDateFormat("dd/MM/yyyy",Locale.getDefault())
-    val currdate = df.format(cur)
-    val monthstodigit= mapOf("Jan" to "01","Feb" to "02","Mar" to "03","Apr" to "04","May" to "05","Jun" to "06","Jul" to "07","Aug" to "08","Sep" to "09","Oct" to "10","Nov" to "11","Dec" to "12")
-    val digittomonths = mapOf(1 to "Jan", 2 to "Feb", 3 to "Mar", 4 to "Apr", 5 to "May", 6 to "Jun", 7 to "Jul", 8 to "Aug", 9 to "Sep", 10 to "Oct", 11 to "Nov", 12 to "Dec")
-    val digittomonths2 = mapOf(1 to "01", 2 to "02", 3 to "03", 4 to "04", 5 to "05", 6 to "06", 7 to "07", 8 to "08", 9 to "09", 10 to "10", 11 to "11", 12 to "12")
+    private val cur = Calendar.getInstance().time
+    private val df = SimpleDateFormat("dd/MM/yyyy",Locale.getDefault())
+    private val currdate = df.format(cur)
+    private val monthstodigit= mapOf("Jan" to "01","Feb" to "02","Mar" to "03","Apr" to "04","May" to "05","Jun" to "06","Jul" to "07","Aug" to "08","Sep" to "09","Oct" to "10","Nov" to "11","Dec" to "12")
+    private val digittomonths = mapOf(1 to "Jan", 2 to "Feb", 3 to "Mar", 4 to "Apr", 5 to "May", 6 to "Jun", 7 to "Jul", 8 to "Aug", 9 to "Sep", 10 to "Oct", 11 to "Nov", 12 to "Dec")
+    private val digittomonths2 = mapOf(1 to "01", 2 to "02", 3 to "03", 4 to "04", 5 to "05", 6 to "06", 7 to "07", 8 to "08", 9 to "09", 10 to "10", 11 to "11", 12 to "12")
 
-    var yearglob = Integer.parseInt(currdate[6].toString()+ currdate[7].toString()+currdate[8].toString()+currdate[9].toString())
-    var monthglob =Integer.parseInt(currdate[3].toString()+ currdate[4].toString())
+    private var yearglob = Integer.parseInt(currdate[6].toString()+ currdate[7].toString()+currdate[8].toString()+currdate[9].toString())
+    private var monthglob =Integer.parseInt(currdate[3].toString()+ currdate[4].toString())
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -71,8 +71,8 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+//        val notificationsViewModel =
+//            ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -84,7 +84,7 @@ class NotificationsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pieChart = requireView()!!.findViewById<PieChart>(R.id.pieChart)
+        pieChart = requireView().findViewById<PieChart>(R.id.pieChart)
 
         val datelocal:String
         if(monthglob<10){
@@ -95,7 +95,7 @@ class NotificationsFragment : Fragment() {
 
     //   binding.search.setText( digittomonths[monthglob].toString()+" ,"+ yearglob.toString())
 
-        val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
+        val databaseHandler = DBHandler(requireActivity().baseContext)
         val stats = databaseHandler.getMonthData(datelocal)
 
         setValues(stats)
@@ -124,25 +124,25 @@ class NotificationsFragment : Fragment() {
 
         setDataToPieChart()
 
-        food?.setOnClickListener{ view ->
+        food?.setOnClickListener{
             dialog("FOOD",R.drawable.iconfood)
         }
-        bills?.setOnClickListener{ view ->
+        bills?.setOnClickListener{
             dialog("BILLS",R.drawable.ic_outline_attach_money_24)
         }
-        shopp?.setOnClickListener{ view ->
+        shopp?.setOnClickListener{
             dialog("SHOPPING",R.drawable.shoping)
         }
-        daily?.setOnClickListener{ view ->
+        daily?.setOnClickListener{
             dialog("Daily Needs",R.drawable.icone)
         }
-        others?.setOnClickListener{ view ->
+        others?.setOnClickListener{
             dialog("OTHERS",R.drawable.icongift)
         }
-        left?.setOnClickListener{ view ->
+        left?.setOnClickListener{
            before()
         }
-        right?.setOnClickListener{ view ->
+        right?.setOnClickListener{
             next()
         }
     }
@@ -182,7 +182,7 @@ class NotificationsFragment : Fragment() {
 
     private fun getItemsList(type: String, img: Int): ArrayList<categoryModelClass> {
         //creating the instance of DatabaseHandler class
-        val databaseHandler: DBHandler = DBHandler(requireContext())
+        val databaseHandler = DBHandler(requireContext())
         val catList: ArrayList<categoryModelClass> = databaseHandler.getMonthdetails(yearglob.toString()+"-"+digittomonths2[monthglob]+"-%", type , img )
 
         return catList
@@ -199,7 +199,7 @@ class NotificationsFragment : Fragment() {
 
 
 
-        val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
+        val databaseHandler = DBHandler(requireActivity().baseContext)
         val stats = databaseHandler.getMonthData("01/"+month+"/"+year)
 
         if(stats.FOOD==0&&stats.SHOPPING==0&&stats.BILLS==0&&stats.Daily==0&&stats.OTHERS==0){
@@ -212,7 +212,6 @@ class NotificationsFragment : Fragment() {
         }else {
             yearglob=Integer.parseInt(year)
             monthglob= Integer.parseInt(month)
-
             setValues(stats)
             initPieChart()
 
@@ -239,7 +238,7 @@ class NotificationsFragment : Fragment() {
             datelocal = "01/" +monthglob.toString()+"/"+yearglob.toString()
         }
 
-        val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
+        val databaseHandler = DBHandler(requireActivity().baseContext)
         val stats = databaseHandler.getMonthData(datelocal)
 
         if(stats.FOOD==0&&stats.SHOPPING==0&&stats.BILLS==0&&stats.Daily==0&&stats.OTHERS==0){
@@ -282,7 +281,7 @@ class NotificationsFragment : Fragment() {
         }
 
 
-        val databaseHandler: DBHandler = DBHandler(requireActivity().baseContext)
+        val databaseHandler = DBHandler(requireActivity().baseContext)
         val stats = databaseHandler.getMonthData(datelocal)
 
         if(stats.FOOD==0&&stats.SHOPPING==0&&stats.BILLS==0&&stats.Daily==0&&stats.OTHERS==0){
@@ -363,7 +362,7 @@ class NotificationsFragment : Fragment() {
 
 
         //add text in center
-        pieChart.setDrawCenterText(true);
+        pieChart.setDrawCenterText(true)
         pieChart.centerText = "Total Amount=  "+"\u20B9 "+"%,d".format((food+bills+shopp+daily+other).toInt())
 
 
@@ -377,7 +376,7 @@ class NotificationsFragment : Fragment() {
             food=0f
         }else{
             binding.foodtxtamt.setText("\u20B9 "+"%,d".format(stats.FOOD))
-            food=stats.FOOD!!.toFloat()
+            food=stats.FOOD.toFloat()
         }
 
         if(stats.BILLS==null){
@@ -385,7 +384,7 @@ class NotificationsFragment : Fragment() {
             bills=0f
         }else{
             binding.billstxtamt.setText("\u20B9 "+"%,d".format(stats.BILLS))
-            bills=stats.BILLS!!.toFloat()
+            bills=stats.BILLS.toFloat()
         }
 
         if(stats.SHOPPING==null){
@@ -393,7 +392,7 @@ class NotificationsFragment : Fragment() {
             shopp=0f
         }else{
             binding.shoppingtxtamt.setText("\u20B9 "+"%,d".format(stats.SHOPPING))
-            shopp=stats.SHOPPING!!.toFloat()
+            shopp=stats.SHOPPING.toFloat()
         }
 
         if(stats.Daily==null){
@@ -401,7 +400,7 @@ class NotificationsFragment : Fragment() {
             daily=0f
         }else{
             binding.dailytxtamt.setText("\u20B9 "+"%,d".format(stats.Daily))
-            daily=stats.Daily!!.toFloat()
+            daily=stats.Daily.toFloat()
         }
 
         if(stats.OTHERS==null){
@@ -409,7 +408,7 @@ class NotificationsFragment : Fragment() {
             other= 0f
         }else{
             binding.otherstxtamt.setText("\u20B9 "+"%,d".format(stats.OTHERS))
-            other=stats.OTHERS!!.toFloat()
+            other=stats.OTHERS.toFloat()
         }
     }
 

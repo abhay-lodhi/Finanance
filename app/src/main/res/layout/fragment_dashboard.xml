@@ -96,7 +96,7 @@
         android:layout_marginTop="18dp"
         android:layout_marginRight="15dp"
         android:ems="10"
-        android:hint="   Notes"
+        android:hint="   Notes(Optional)"
         android:minHeight="60dp"
         android:paddingLeft="2dp"
         android:paddingTop="5dp"

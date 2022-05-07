@@ -1,6 +1,6 @@
 package com.example.finanance.adapter
 
-import android.content.Context
+
 import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finanance.R
 import com.example.finanance.model.homeRecyclerModelClass
@@ -36,7 +36,7 @@ class home_recycler (private val mList: ArrayList<homeRecyclerModelClass>) : Rec
             holder.monthYear.visibility=View.GONE
             holder.linear.visibility=View.VISIBLE
             holder.icon.setImageResource(ItemsViewModel.image)
-            holder.category.text=ItemsViewModel.cat.toString()
+            holder.category.text=ItemsViewModel.cat
             holder.amount.text = "\u20B9 "+"%,d".format(ItemsViewModel.Amount)
             holder.dte.text= ItemsViewModel.date
        }
@@ -64,7 +64,7 @@ class home_recycler (private val mList: ArrayList<homeRecyclerModelClass>) : Rec
         val category: TextView= itemView.findViewById(R.id.catrvhomepage)
         val monthYear: TextView= itemView.findViewById(R.id.monthyear)
         val linear: LinearLayout=itemView.findViewById(R.id.linearLayout)
-        val cont: ConstraintLayout=itemView.findViewById(R.id.container)
+        val cont: CardView=itemView.findViewById(R.id.container)
     }
 }
 
