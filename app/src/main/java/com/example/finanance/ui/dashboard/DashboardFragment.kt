@@ -157,7 +157,8 @@ class DashboardFragment : Fragment() {
                 binding.amount.text.clear()
                 binding.addNotes.text.clear()
                binding.date.setText(sdf.format(today).toString())
-               binding.autoCompleteTextView.setText("FOOD")
+               binding.autoCompleteTextView.text.clear()
+                binding.textinputlayout.setStartIconDrawable(null)
             }else{
                 Toast.makeText(
                     getActivity()?.getApplicationContext(),

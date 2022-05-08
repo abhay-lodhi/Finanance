@@ -49,12 +49,12 @@ class DBHandler(context: Context) :
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_AMOUNT +" INTEGER,"+ KEY_TYPE+" TEXT,"+ KEY_DAT+" TEXT,"+
                 KEY_NOTE+" TEXT,"+ KEY_MODE+" TEXT,"+ KEY_TRANSACTIONID+" TEXT"+")")
 
-       p0?.execSQL(CREATE_CONTACTS_TABLE)
+        p0?.execSQL(CREATE_CONTACTS_TABLE)
 
         val CREATE_STATICS_TABLE = ("CREATE TABLE " + TABLE_Statics + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_MONTHYEAR +" TEXT,"+ KEY_FOOD +" INTEGER,"+ KEY_BILLS +" INTEGER,"+
-                 KEY_SHOPPING +" INTEGER,"+ KEY_DAILY +" INTEGER,"+
-                 KEY_OTHER +" INTEGER"+ ")")
+                KEY_SHOPPING +" INTEGER,"+ KEY_DAILY +" INTEGER,"+
+                KEY_OTHER +" INTEGER"+ ")")
         p0?.execSQL(CREATE_STATICS_TABLE)
 
 
@@ -62,8 +62,8 @@ class DBHandler(context: Context) :
 
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
-       p0!!.execSQL("DROP TABLE IF EXISTS $TABLE_TRANSACTIONS")
-       p0!!.execSQL("DROP TABLE IF EXISTS $TABLE_Statics")
+        p0!!.execSQL("DROP TABLE IF EXISTS $TABLE_TRANSACTIONS")
+        p0.execSQL("DROP TABLE IF EXISTS $TABLE_Statics")
         onCreate(p0)
     }
 
@@ -86,49 +86,49 @@ class DBHandler(context: Context) :
         val success = db.insert(TABLE_TRANSACTIONS, null, contentValues)
         //2nd argument is String containing nullColumnHack
 
-         // Closing database connection
+        // Closing database connection
 
         val ty= tran.Type.replace(
             " ",
             "_"
         )
-         val db2= this.readableDatabase
+        val db2= this.readableDatabase
         var cs: Cursor? = null
-         cs= db2.rawQuery("SELECT "+ty+" FROM "+ TABLE_Statics+" WHERE "+ KEY_MONTHYEAR + " = '" +tran.Date.drop(3)+"'",null)
-       if(cs.moveToFirst()){
-           var amt=cs.getIntOrNull(cs.getColumnIndex(ty))
-           if(amt==null){
-             amt=0
-           }
-           amt=amt+tran.Amount
-          db.execSQL("UPDATE "+ TABLE_Statics+" SET "+ ty +" = "+ amt +" WHERE "+ KEY_MONTHYEAR + " = '" +tran.Date.drop(3)+"'")
-        //   return amt
-       }else{
-           val content= ContentValues()
-           content.put(ty,tran.Amount)
-           content.put(KEY_MONTHYEAR,tran.Date.drop(3))
-           db.insert(TABLE_Statics,null,content)
-       }
+        cs= db2.rawQuery("SELECT "+ty+" FROM "+ TABLE_Statics+" WHERE "+ KEY_MONTHYEAR + " = '" +tran.Date.drop(3)+"'",null)
+        if(cs.moveToFirst()){
+            var amt=cs.getIntOrNull(cs.getColumnIndex(ty))
+            if(amt==null){
+                amt=0
+            }
+            amt=amt+tran.Amount
+            db.execSQL("UPDATE "+ TABLE_Statics+" SET "+ ty +" = "+ amt +" WHERE "+ KEY_MONTHYEAR + " = '" +tran.Date.drop(3)+"'")
+            //   return amt
+        }else{
+            val content= ContentValues()
+            content.put(ty,tran.Amount)
+            content.put(KEY_MONTHYEAR,tran.Date.drop(3))
+            db.insert(TABLE_Statics,null,content)
+        }
         db.close()
         db2.close()
-     return success
+        return success
     }
 
-fun getMonthData(dat: String): typeModelClass {
-val db= this.readableDatabase
-    val stats: typeModelClass
-    var cs: Cursor? = null
-    cs= db.rawQuery("SELECT * FROM "+ TABLE_Statics+" WHERE "+ KEY_MONTHYEAR + " = '" + dat.toString().drop(3)+"'",null)
-    if(cs.moveToFirst()){
-      stats= typeModelClass(cs.getIntOrNull(cs.getColumnIndex(KEY_FOOD)),cs.getIntOrNull(cs.getColumnIndex(
-          KEY_BILLS)),cs.getIntOrNull(cs.getColumnIndex(KEY_SHOPPING)),cs.getIntOrNull(cs.getColumnIndex(
-          KEY_DAILY)),cs.getIntOrNull(cs.getColumnIndex(KEY_OTHER)))
-    }else{
-    stats= typeModelClass(0,0,0,0,0)
+    fun getMonthData(dat: String): typeModelClass {
+        val db= this.readableDatabase
+        val stats: typeModelClass
+        var cs: Cursor? = null
+        cs= db.rawQuery("SELECT * FROM "+ TABLE_Statics+" WHERE "+ KEY_MONTHYEAR + " = '" + dat.toString().drop(3)+"'",null)
+        if(cs.moveToFirst()){
+            stats= typeModelClass(cs.getIntOrNull(cs.getColumnIndex(KEY_FOOD)),cs.getIntOrNull(cs.getColumnIndex(
+                KEY_BILLS)),cs.getIntOrNull(cs.getColumnIndex(KEY_SHOPPING)),cs.getIntOrNull(cs.getColumnIndex(
+                KEY_DAILY)),cs.getIntOrNull(cs.getColumnIndex(KEY_OTHER)))
+        }else{
+            stats= typeModelClass(0,0,0,0,0)
+        }
+        db.close()
+        return stats
     }
-    db.close()
-    return stats
-}
 
     @SuppressLint("Range")
     fun getMonthdetails(dat: String, cate: String, img : Int): ArrayList<categoryModelClass>{
@@ -168,8 +168,9 @@ val db= this.readableDatabase
                 catList.add(cat)
             } while (cursor.moveToNext())
         }
+        db.close()
         return catList
-db.close()
+
     }
 
     @SuppressLint("Range")
@@ -237,8 +238,9 @@ db.close()
                 catList.add(row)
             } while (cursor.moveToNext())
         }
+        db.close()
         return catList
-db.close()
+
     }
 
     fun cleardata(){
@@ -252,4 +254,4 @@ db.close()
 //      val db= this.readableDatabase
 //
 //    }
-    }
+}
