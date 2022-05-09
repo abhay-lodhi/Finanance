@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "814805600134",
+    "project_id": "finman-df55d",
+    "storage_bucket": "finman-df55d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814805600134:android:df92d35e866990054ece07",
+        "android_client_info": {
+          "package_name": "com.example.finanance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814805600134-e8ikdf0qomjpnhurejagamo0m49is5bj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqbue2_nRa2L49U2BRy09k-JRh2ExjOXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814805600134-e8ikdf0qomjpnhurejagamo0m49is5bj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

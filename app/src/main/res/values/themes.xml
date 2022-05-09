@@ -6,7 +6,7 @@
 
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimaryVariant">@color/golden</item>
         <item name="colorOnPrimary">@color/grey</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/purple_500</item>
@@ -30,5 +30,14 @@
 
     <style name="ss" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/ss</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnPrimary</item>
+
+
+        <item name="colorPrimary">@color/golden</item>
+        <item name="colorPrimaryVariant">@color/golden</item>
+        <item name="colorOnPrimary">@color/golden</item>
+
+        <item name="android:windowLightStatusBar">?attr/colorOnSecondary</item>
+
     </style>
 </resources>
