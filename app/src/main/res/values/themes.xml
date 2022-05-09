@@ -19,7 +19,7 @@
     </style>
     <style name="EditTextTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorControlNormal">@color/grey2</item>
-        <item name="colorControlActivated">@color/purple_500</item>
+        <item name="colorControlActivated">@color/golden</item>
     </style>
     <style name="Textinputlayouttheme"  parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorControlNormal">@color/grey2</item>
