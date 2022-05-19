@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinMan</string>
+    <string name="app_name">Finance</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Add</string>
     <string name="title_notifications">Statistics</string>

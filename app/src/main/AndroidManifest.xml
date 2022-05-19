@@ -10,6 +10,7 @@
         android:windowSoftInputMode="adjustPan|adjustResize"
         android:supportsRtl="true"
         android:theme="@style/Theme.Finanance">
+
         <activity
             android:name="com.pulk.finanance.MainActivity"
             android:exported="true"
