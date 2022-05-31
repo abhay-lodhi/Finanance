@@ -4,152 +4,190 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="com.pulk.finanance.ui.dashboard.DashboardFragment">
 
-    <EditText
-        android:id="@+id/amount"
-        android:layout_width="0dp"
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginTop="110dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:paddingBottom="15dp"
-        android:paddingLeft="2dp"
-        android:paddingTop="5dp"
-        android:textSize="18dp"
-        android:minHeight="60dp"
-        android:hint="  ₹   Amount "
-        android:theme="@style/EditTextTheme"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textinputlayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginRight="15dp"
-        android:background="@android:color/transparent"
-        android:onClick="textinputlay"
-        app:startIconTint="@null"
-        app:boxBackgroundColor="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amount"
-        app:startIconDrawable="@drawable/iconfood"
-        >
-
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="none"
-            android:textSize="18dp"
-            android:paddingBottom="3dp"
-            android:paddingTop="5dp"
-            android:minHeight="60dp"
-            android:text="FOOD"
-            android:theme="@style/Textinputlayouttheme"
-            />
-
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginRight="15dp"
-        android:ems="10"
-        android:paddingLeft="10dp"
-        android:hint="DD/MM/YYYY"
-        android:textSize="18dp"
-        android:paddingBottom="15dp"
-        android:paddingTop="5dp"
-        android:drawablePadding="15dp"
-        android:theme="@style/EditTextTheme"
-        android:editable="false"
-        android:minHeight="60dp"
-        android:drawableStart="@drawable/ic_outline_calendar_month_24"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textinputlayout" />
-
-    <EditText
-        android:id="@+id/addNotes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginRight="15dp"
-        android:ems="10"
-        android:hint="   Notes(Optional)"
-        android:minHeight="60dp"
-        android:paddingLeft="2dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="15dp"
-        android:textSize="18dp"
-        android:theme="@style/EditTextTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
-
-    <Button
-        android:id="@+id/Save"
-        android:layout_width="350dp"
-        android:layout_height="57dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="120dp"
-        android:background="@drawable/roundbutton"
-        android:minHeight="60dp"
-        android:text="SAVE"
-        android:textSize="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.53">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="15dp"
+                android:ems="10"
+                android:hint="  ₹   Amount "
+                android:inputType="numberDecimal"
+                android:minHeight="60dp"
+                android:paddingStart="2dp"
+                android:paddingTop="5dp"
+                android:textSize="16sp"
+                android:theme="@style/EditTextTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinputlayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="15dp"
+                android:background="@android:color/transparent"
+                android:onClick="textinputlay"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/amount"
+                app:startIconDrawable="@drawable/iconfood"
+                app:startIconTint="@null">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="none"
+                    android:minHeight="60dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="3dp"
+                    android:text="FOOD"
+                    android:textSize="15dp"
+                    android:theme="@style/Textinputlayouttheme" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <EditText
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="15dp"
+                android:drawableStart="@drawable/ic_outline_calendar_month_24"
+                android:drawablePadding="15dp"
+                android:editable="false"
+                android:ems="10"
+                android:hint="DD/MM/YYYY"
+                android:minHeight="60dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="15dp"
+                android:textSize="15dp"
+                android:theme="@style/EditTextTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addNotes" />
+
+            <EditText
+                android:id="@+id/addNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="15dp"
+                android:ems="10"
+                android:hint="   Notes(Optional)"
+                android:minHeight="60dp"
+                android:paddingLeft="2dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="15dp"
+                android:textSize="15dp"
+                android:theme="@style/EditTextTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textinputlayout" />
+
+            <Button
+                android:id="@+id/Save"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="60dp"
+                android:background="@drawable/roundbutton"
+                android:minHeight="60dp"
+                android:text="SAVE"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:src="@drawable/back_all"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorOnPrimary"
+        android:background="@android:color/transparent"
         android:minHeight="?attr/actionBarSize"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="22dp"
-            android:text="Add Expense"
             android:layout_gravity="center"
-            android:textColor="@color/black2"
-            android:id="@+id/toolbar_title" />
-        <ImageView
-            android:id="@+id/delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:src="@drawable/ic_outline_info_24"
-            android:layout_marginEnd="17dp"
-            />
+            android:text="Add Expense"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="142dp"
+            tools:layout_editor_absoluteY="13dp" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/delete"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="end"-->
+        <!--            android:src="@drawable/ic_outline_info_24"-->
+        <!--            android:layout_marginEnd="17dp"-->
+        <!--            />-->
 
     </androidx.appcompat.widget.Toolbar>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
