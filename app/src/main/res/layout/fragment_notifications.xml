@@ -6,60 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.pulk.finanance.ui.notifications.NotificationsFragment">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-
-        android:layout_width="match_parent"
-
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-
-        <EditText
-            android:id="@+id/search"
-            android:layout_width="288dp"
-            android:layout_height="match_parent"
-            android:layout_weight="18"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"
-
-            android:backgroundTint="@color/white"
-            android:imeOptions="actionSearch"
-            android:inputType="text"
-            android:drawableEnd="@drawable/search"
-            />
-
-
-        <androidx.constraintlayout.utils.widget.ImageFilterButton
-            android:id="@+id/left_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/white"
-            android:clickable="true"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_outline_chevron_left_24" />
-
-        <androidx.constraintlayout.utils.widget.ImageFilterButton
-            android:id="@+id/right_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/white"
-            android:clickable="true"
-            android:minWidth="48dp"
-            android:layout_marginRight="5dp"
-
-            android:minHeight="48dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_baseline_chevron_right_24" />
-
-    </LinearLayout>
 
     <TextView
         android:id="@+id/foodtext"
@@ -150,29 +96,85 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_width="388dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="bottom"
+        android:paddingLeft="15dp"
         android:text="Category"
         android:textColor="@color/text"
-        android:gravity="bottom"
+        android:textColorHint="@color/black2"
         android:textSize="20sp"
-        android:paddingLeft="15dp"
         app:layout_constraintBottom_toTopOf="@+id/foodtext"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColorHint="@color/black2"
-        />
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="25dp"
+        android:layout_width="316dp"
+        android:layout_height="203dp"
+        android:layout_margin="5dp"
+        android:padding="5dp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"/>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.32" />
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+
+        android:layout_width="409dp"
+
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="288dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="16sp"
+            android:backgroundTint="@color/white"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:drawableEnd="@drawable/search" />
+
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/left_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_outline_chevron_left_24" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/right_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            android:minWidth="48dp"
+            android:layout_marginRight="5dp"
+
+            android:minHeight="48dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_chevron_right_24" />
+
+    </LinearLayout>
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="409dp"

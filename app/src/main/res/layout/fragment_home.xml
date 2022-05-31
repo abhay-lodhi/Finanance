@@ -38,9 +38,10 @@
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="hell"
         android:textColor="@color/black2"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,14 +49,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvhome"
-        android:layout_width="match_parent"
+        android:layout_width="372dp"
         android:layout_height="350dp"
+        android:layout_marginBottom="55dp"
+        android:padding="4dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="55dp"
-       />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/tvNoRecordsAvailable"
@@ -70,18 +71,17 @@
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="325dp"
+        android:layout_height="197dp"
 
         android:layout_marginTop="110dp"
         android:layout_marginBottom="25dp"
 
         app:layout_constraintBottom_toTopOf="@+id/rvhome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintVertical_bias="0.333" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

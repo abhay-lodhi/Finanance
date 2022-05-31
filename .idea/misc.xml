@@ -23,6 +23,7 @@
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/layout/rvhomepage_row.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Abhay Lodhi/AndroidStudioProjects/Finanance/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.159" />
+        <entry key="app/src/main/res/drawable/back_all.xml" value="0.262" />
         <entry key="app/src/main/res/drawable/ic_baseline_chevron_right_24.xml" value="0.159" />
         <entry key="app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.159" />
         <entry key="app/src/main/res/drawable/ic_baseline_spa_24.xml" value="0.159" />
@@ -38,11 +39,15 @@
         <entry key="app/src/main/res/drawable/ic_outline_info_24.xml" value="0.159" />
         <entry key="app/src/main/res/drawable/splashscreen.xml" value="0.159" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21302083333333333" />
+        <entry key="app/src/main/res/layout/back_all.xml" value="0.2557291666666667" />
         <entry key="app/src/main/res/layout/category_dialog.xml" value="0.23177083333333334" />
+        <entry key="app/src/main/res/layout/category_row.xml" value="0.2557291666666667" />
+        <entry key="app/src/main/res/layout/dropdown_category.xml" value="0.2557291666666667" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/layout/rvhomepage.xml" value="0.23177083333333334" />
+        <entry key="app/src/main/res/layout/rvhomepage_row.xml" value="0.2557291666666667" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.159" />
       </map>
