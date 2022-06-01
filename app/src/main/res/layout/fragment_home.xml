@@ -49,7 +49,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvhome"
-        android:layout_width="372dp"
+        android:layout_width="0dp"
         android:layout_height="350dp"
         android:layout_marginBottom="55dp"
         android:padding="4dp"
@@ -72,7 +72,7 @@
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
         android:layout_width="325dp"
-        android:layout_height="197dp"
+        android:layout_height="0dp"
 
         android:layout_marginTop="110dp"
         android:layout_marginBottom="25dp"
