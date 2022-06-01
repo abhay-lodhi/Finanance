@@ -10,27 +10,24 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="359dp"
+        android:layout_height="536dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.53">
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <EditText
                 android:id="@+id/amount"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="53dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginRight="15dp"
@@ -40,7 +37,8 @@
                 android:minHeight="60dp"
                 android:paddingStart="2dp"
                 android:paddingTop="5dp"
-                android:textSize="16sp"
+                android:paddingBottom="15dp"
+                android:textSize="15dp"
                 android:theme="@style/EditTextTheme"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
@@ -53,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="29dp"
                 android:layout_marginRight="15dp"
                 android:background="@android:color/transparent"
                 android:onClick="textinputlay"
@@ -68,10 +66,9 @@
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTextView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:layout_weight="1"
                     android:inputType="none"
-                    android:minHeight="60dp"
                     android:paddingTop="5dp"
                     android:paddingBottom="3dp"
                     android:text="FOOD"
@@ -84,16 +81,16 @@
             <EditText
                 android:id="@+id/date"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="52dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="29dp"
                 android:layout_marginRight="15dp"
                 android:drawableStart="@drawable/ic_outline_calendar_month_24"
                 android:drawablePadding="15dp"
                 android:editable="false"
                 android:ems="10"
                 android:hint="DD/MM/YYYY"
-                android:minHeight="60dp"
+
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="15dp"
@@ -108,13 +105,12 @@
             <EditText
                 android:id="@+id/addNotes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="52dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="29dp"
                 android:layout_marginRight="15dp"
                 android:ems="10"
                 android:hint="   Notes(Optional)"
-                android:minHeight="60dp"
                 android:paddingLeft="2dp"
                 android:paddingTop="5dp"
                 android:paddingBottom="15dp"
@@ -128,15 +124,14 @@
             <Button
                 android:id="@+id/Save"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="74dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="74dp"
                 android:background="@drawable/roundbutton"
-                android:minHeight="60dp"
                 android:text="SAVE"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -159,11 +154,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:minHeight="?attr/actionBarSize"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -174,7 +168,7 @@
             android:layout_gravity="center"
             android:text="Add Expense"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="142dp"
             tools:layout_editor_absoluteY="13dp" />
